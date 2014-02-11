@@ -1,0 +1,125 @@
+{{setPageTitle "Wedding"}}
+{{setActiveNav "wedding"}}
+{{setYUIModule "le-wedding"}}
+{{setDescription "The details of Charles & Fionas wedding."}}
+{{addCSS "/css/details.css"}}
+{{addCSS "/css/wedding.css"}}
+
+<div id="map" data-map="ericf.map-89cfakky"></div>
+
+<div class="l-wrap">
+    <h1 class="ann">
+        <span class="ann-secondary">Wedding</span>
+        <span class="ann-primary">Month Day, 2014</span>
+        <span class="ann-secondary">Sheridan, WY</span>
+    </h1>
+
+    <ol class="cal l-contain l-grid">
+        {{#day "Friday 4"}}
+            {{addDayEvent "evening-before"
+                start = "8pm"
+                end   = "1am"
+                desc  = "Day Before Wedding Event"}}
+
+            {{> day/header}}
+            {{> day/events}}
+        {{/day}}
+
+        {{#day "Saturday 5" primary=true}}
+            {{addDayEvent "ceremony"
+                start = "3:30pm"
+                desc  = "Wedding Ceremony"}}
+
+            {{addDayEvent "ceremony"
+                start = "5pm"
+                end   = "10pm"
+                desc  = "Reception"}}
+
+            {{> day/header}}
+            {{> day/events}}
+        {{/day}}
+
+        {{#day "Sunday 6"}}
+            {{addDayEvent "brunch"
+                start = "11am"
+                end   = "1pm"
+                desc  = "Day After wedding event"}}
+
+            {{> day/header}}
+            {{> day/events}}
+        {{/day}}
+    </ol>
+
+    <div class="l-contain">
+        <ul class="travel-nav l-grid">
+            <li class="travel-nav-item l-grid-u">
+                <a class="button" data-icon="p" href="/logistics/">Get There</a>
+            </li>
+            <li class="travel-nav-item l-grid-u">
+                <a class="button" data-icon="b" href="/logistics/hotels/">Stay There</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="details l-contain">
+        <h2 id="evening-before" class="anchored-header">
+            Drinks the Evening Before
+        </h2>
+
+        <div class="details-group l-grid">
+            <div class="l-grid-u">
+                <p class="details-content">
+                    If you arrive in Sheridan, WY by <b>DAY-OF-WEEK, MONTH Day#</b> we would love for you to meet up with us as at:
+                </p>
+            </div>
+
+            <div class="l-grid-u">
+                <address class="details-content">
+                    <b><a href="http://VenuNameURL_here">VenuNameHere</a></b><br>
+                    <a href="MAP_URL_HERE">
+                        Address Line 1<br>
+                        Address Line 2
+                    </a>
+                </address>
+            </div>
+        </div>
+
+        <p>
+            Extra information about pre-wedding venu or reservations. 
+        </p>
+
+
+        <h2 id="ceremony" class="anchored-header">
+            Ceremony &amp; Reception
+        </h2>
+
+        <div class="details-group l-grid">
+            <div class="l-grid-u">
+                <p class="details-content">
+                    The wedding ceremony will begin, <em>promptly</em>, on <b>DAY-OF-WEEK at TIME</b>. The ceremony and reception will be held at ________________________:
+                </p>
+            </div>
+
+            <div class="l-grid-u">
+                <address class="details-content">
+                    <a href="MAP_URL_HERE">
+                        <b>VenuNameHere</b><br>
+                        Address Line 1<br>
+                        Address Line 2
+                    </a>
+                </address>
+            </div>
+        </div>
+
+        <h2 id="brunch" class="anchored-header">
+            Day After Wedding Event
+        </h2>
+
+        <p>
+            Information and location of informal day-after event if one exists. 
+        </p>
+        <p>
+            We would appreciate if you would RSVP, <em>regrets only</em>, <a href="/rsvp/brunch/">if you <em>won't</em> be attending the brunch</a>. (This is a link that will let you RSVP to the "day after" event if one exists. 
+        </p>
+    </div>
+</div>
