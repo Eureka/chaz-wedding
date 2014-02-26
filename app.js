@@ -137,7 +137,7 @@ app.get('/registry/',
 //basic login page. 
 app.get('/login',
   function(req, res) {
-    res.redirect('/welcome/' + req.user.username);
+    res.redirect('/welcome/');
   });
 
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
