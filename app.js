@@ -179,7 +179,7 @@ app.get('/welcome/', routes.render('landing_page'));
 
 
 // test auth controller system. 
-app.get('/authControl/', routes.render('authController'));
+//app.get('/authControl/', routes.render('authController'));
 
 //app.get('/wedding/', routes.render('wedding'));
 
@@ -224,6 +224,13 @@ app.get('/login',
   function(req, res) {
     res.redirect('/welcome/');
   });
+
+// post pages
+app.post('/authController', passport.authenticate('local', {
+	successRedirect : '/auth/login/success',
+	failureRedirect : '/auth/login/failure',
+	failureFlash : true
+	}));
 
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
