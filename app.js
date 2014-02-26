@@ -8,7 +8,7 @@ var combo   = require('combohandler'),
 //	flash = require('flash');
 	LocalStrategy = require('passport-local').Strategy;
 	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-	Sequelize = require('sequelize');
+//	Sequelize = require('sequelize');
 
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
