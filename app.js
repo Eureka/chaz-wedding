@@ -6,7 +6,7 @@ var combo   = require('combohandler'),
 // -- Add in requires for express
 	passport   = require('passport');
 	LocalStrategy = require('passport-local').Strategy;
-	ensureLoggedIn = require('ensureLoggedIn');
+	ensureLoggedIn = require('connect-ensure-login');
 
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
