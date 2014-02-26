@@ -157,7 +157,7 @@ var auth = {};
 
 auth.validPassword = function(password){
  return this.password === password;
-}
+};
 
 auth.seralizeUser = function(user, done){
  done(null, user);
