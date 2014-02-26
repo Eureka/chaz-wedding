@@ -5,7 +5,7 @@ var combo   = require('combohandler'),
 
 // -- Add in requires for express
 	passport   = require('passport');
-	flash = require('flash');
+//	flash = require('flash');
 	LocalStrategy = require('passport-local').Strategy;
 	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 	Sequelize = require('sequelize');
@@ -102,7 +102,7 @@ app.use(middleware.slash());
 app.use(express.static(config.dirs.pub));
 app.use(middleware.notfound);
 app.use(express.bodyParser());
-app.use(flash());
+//app.use(flash());
 app.use(express.session({ secret: 'super secret'}));
 // Passport
 app.use(passport.initialize());
