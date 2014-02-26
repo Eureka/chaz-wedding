@@ -96,7 +96,7 @@ app.use(express.favicon(config.dirs.pub + '/favicon.ico'));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(flash());
-app.use(express.session({ secret: 'super secret', cookie: {secure: false, maxAge: 300000}}));
+app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.cookieSession(config.session));
