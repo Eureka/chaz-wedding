@@ -5,8 +5,10 @@ var combo   = require('combohandler'),
 
 // -- Add in requires for express
 	passport   = require('passport');
+	flash = require('flash');
 	LocalStrategy = require('passport-local').Strategy;
-	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn
+	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+	Sequelize = require('sequelize');
 
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
@@ -24,9 +26,7 @@ app.set('views', config.dirs.views);
 app.set('view engine', 'hbs');
 app.set('state namespace', 'YUI.Env.LE');
 app.enable('strict routing');
-// Passport
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -41,8 +41,6 @@ app.engine('hbs', exphbs({
 	//passport.use(new LocalStrategy(Account.authenticate()));
 	//passport.serializeUser(Account.serializeUser());
 	//passport.deserializeUser(Account.deserializeUser());
-
-
 
 // -- Locals -------------------------------------------------------------------
 
@@ -103,6 +101,12 @@ app.use(app.router);
 app.use(middleware.slash());
 app.use(express.static(config.dirs.pub));
 app.use(middleware.notfound);
+app.use(express.bodyParser());
+app.use(flash());
+app.use(express.session({ secret: 'super secret'}));
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 if (config.isDevelopment) {
     app.use(express.errorHandler({
