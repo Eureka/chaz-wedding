@@ -123,7 +123,7 @@ app.get('/logistics/outings/', routes.render('logistics/outings'));
 
 //app.get('/registry/', routes.render('registry'));
 /// Modified to use auth. 
-app.get('/account',
+app.get('/registry/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.send('Hello ' + req.user.username);
