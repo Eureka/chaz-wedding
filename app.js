@@ -100,7 +100,7 @@ app.use(flash());
 app.use(express.session({ secret: 'thisisatestsasasa', maxAge:null }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.cookieSession(config.session));
+//app.use(express.cookieSession(config.session));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
