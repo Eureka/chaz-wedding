@@ -5,24 +5,6 @@
 
     <h1><center>Please sign in to view this page.<center></h1>
 
-    <p class="callout">
-        To respond to your invitiation to our wedding, you’ll need to follow the special link which was emailed to you.
-    </p>
-
-    <h2>Resend Email with Special RSVP Link</h2>
-
-  {{#resent}}
-    <p>
-      {{#if needsEmail}}
-        Please enter your email address.
-      {{/if}}
-
-      {{#if sent}}
-        Your special RSVP link has been sent to: <b>{{sent}}</b>
-      {{/if}}
-    </p>
-  {{/resent}}
-
     <form class="resend l-grid" action="/authController" method="POST">
         <input type="username" name="username" placeholder="Username">
 
