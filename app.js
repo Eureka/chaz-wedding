@@ -117,6 +117,9 @@ if (config.isDevelopment) {
 
 app.get('/', routes.render('home'));
 
+//new landing page for login. 
+app.get('/welcome/', routes.render('landing_page'));
+
 app.get('/wedding/', routes.render('wedding'));
 
 app.get('/logistics/',         routes.render('logistics'));
