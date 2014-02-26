@@ -4,6 +4,13 @@
 <div class="l-contain">
 
     <h1><center>Please sign in to view this page.<center></h1>
+  if (!user)
+  a(href="/login") Login
+  br
+  a(href="/register") Register
+if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/logout") Logout
 
     
 </div>
