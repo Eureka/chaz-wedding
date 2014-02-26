@@ -3,6 +3,10 @@ var combo   = require('combohandler'),
     exphbs  = require('express3-handlebars'),
     state   = require('express-state'),
 
+// -- Add in requires for express
+	passport   = require('passport');
+	LocalStrategy = require('passport-local').Strategy;
+
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
     middleware = require('./middleware'),
@@ -19,6 +23,9 @@ app.set('views', config.dirs.views);
 app.set('view engine', 'hbs');
 app.set('state namespace', 'YUI.Env.LE');
 app.enable('strict routing');
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -27,6 +34,12 @@ app.engine('hbs', exphbs({
     layoutsDir   : config.dirs.layouts,
     partialsDir  : config.dirs.partials
 }));
+
+// -- Passport Configuration 
+var Account = require('./models/account');
+	passport.use(new LocalStrategy(Account.authenticate()));
+	passport.serializeUser(Account.serializeUser());
+	passport.deserializeUser(Account.deserializeUser());
 
 // -- Locals -------------------------------------------------------------------
 
