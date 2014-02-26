@@ -120,7 +120,19 @@ app.get('/logistics/',         routes.render('logistics'));
 app.get('/logistics/hotels/',  routes.render('logistics/hotels'));
 app.get('/logistics/outings/', routes.render('logistics/outings'));
 
-app.get('/registry/', routes.render('registry'));
+//app.get('/registry/', routes.render('registry'));
+/// Modified to use auth. 
+app.get('/registry',
+	ensureLoggedIn('/login'),
+	function(req, res) {
+		res.send('Hello ' + req.user.username);
+	});
+
+//basic login page. 
+app.get('/login',
+  function(req, res) {
+    res.send('<html><body><a href="/auth/twitter">Sign in with Twitter</a></body></html>');
+  });
 
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
