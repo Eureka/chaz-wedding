@@ -2,13 +2,8 @@ var combo   = require('combohandler'),
     express = require('express'),
     exphbs  = require('express3-handlebars'),
     state   = require('express-state'),
-
-// -- Add in requires for express
-//	passport   = require('passport');
-//	flash = require('flash');
-//	LocalStrategy = require('passport-local').Strategy;
 	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-//	Sequelize = require('sequelize');
+
 
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
@@ -17,8 +12,8 @@ var combo   = require('combohandler'),
 
     app = express();
 // Required Config additions of passport and flash
-        var flash = require("connect-flash");
-        var passport = require("passport");
+    var flash = require("connect-flash");
+    var passport = require("passport");
 	LocalStrategy = require('passport-local').Strategy;
 	var Sequelize = require('sequelize');
 	var PassportLocalStrategy = require('passport-local').Strategy;
@@ -41,12 +36,6 @@ app.engine('hbs', exphbs({
     layoutsDir   : config.dirs.layouts,
     partialsDir  : config.dirs.partials
 }));
-
-// -- Passport Configuration 
-//var Account = require('./models/account');
-	//passport.use(new LocalStrategy(Account.authenticate()));
-	//passport.serializeUser(Account.serializeUser());
-	//passport.deserializeUser(Account.deserializeUser());
 
 // -- Locals -------------------------------------------------------------------
 
@@ -190,9 +179,8 @@ app.get('/welcome/', routes.render('landing_page'));
 //app.get('/registry/', routes.render('registry'));
 /// Modified to use auth. 
 app.get('/registry/',
-  ensureLoggedIn('/login'),
-  function(req, res) {
-    res.send('Hello ' + req.user.username);
+  ensureAuthenticated, function(req, res) {
+    res.render('registry', { user: req.user});
   });
 
 app.get('/wedding/',
@@ -225,12 +213,21 @@ app.get('/login',
     res.redirect('/welcome/');
   });
 
-// post pages
-app.post('/authController', passport.authenticate('local', {
-	successRedirect : '/auth/login/success',
-	failureRedirect : '/auth/login/failure',
-	failureFlash : true
-	}));
+// Post Login Stuff.
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) {
+      req.session.messages =  [info.message];
+      return res.redirect('/login');
+    }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/');
+    });
+  })(req, res, next);
+});
+
 
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
