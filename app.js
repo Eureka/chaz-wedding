@@ -42,6 +42,8 @@ app.engine('hbs', exphbs({
 	//passport.serializeUser(Account.serializeUser());
 	//passport.deserializeUser(Account.deserializeUser());
 
+
+
 // -- Locals -------------------------------------------------------------------
 
 app.expose(config.yui.config, 'window.YUI_config');
