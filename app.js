@@ -96,10 +96,10 @@ app.use(express.favicon(config.dirs.pub + '/favicon.ico'));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(flash());
-//app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
-app.use(express.session({ secret: 'thisisatestsasasa', maxAge:null }));
+app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
+// broken with the express.session config above. 
 //app.use(express.cookieSession(config.session));
 app.use(express.json());
 app.use(express.urlencoded());
