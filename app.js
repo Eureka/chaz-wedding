@@ -124,15 +124,39 @@ app.get('/', routes.render('home'));
 //new landing page for login. 
 app.get('/welcome/', routes.render('landing_page'));
 
-app.get('/wedding/', routes.render('wedding'));
+//app.get('/wedding/', routes.render('wedding'));
 
-app.get('/logistics/',         routes.render('logistics'));
-app.get('/logistics/hotels/',  routes.render('logistics/hotels'));
-app.get('/logistics/outings/', routes.render('logistics/outings'));
+//app.get('/logistics/',         routes.render('logistics'));
+//app.get('/logistics/hotels/',  routes.render('logistics/hotels'));
+//app.get('/logistics/outings/', routes.render('logistics/outings'));
 
 //app.get('/registry/', routes.render('registry'));
 /// Modified to use auth. 
 app.get('/registry/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.send('Hello ' + req.user.username);
+  });
+
+app.get('/wedding/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.send('Hello ' + req.user.username);
+  });
+  
+app.get('/logistics/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.send('Hello ' + req.user.username);
+  });
+  
+app.get('/logistics/hotels/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.send('Hello ' + req.user.username);
+  });
+
+app.get('/logistics/outings/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.send('Hello ' + req.user.username);
