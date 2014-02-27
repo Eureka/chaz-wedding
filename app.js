@@ -124,7 +124,8 @@ if (config.isDevelopment) {
 
 // -- Routes -------------------------------------------------------------------
 
-app.get('/', routes.render('home'));
+//app.get('/', routes.render('home'));
+apt.get('/', routes.render('landing_page'));
 
 //new landing page for login. 
 app.get('/welcome/', routes.render('landing_page'));
@@ -132,52 +133,41 @@ app.get('/welcome/', routes.render('landing_page'));
 app.get('/auth/login/failure', routes.render('auth/login/failure'));
 app.get('/auth/login/success', routes.render('auth/login/success'));
 
-
-//app.get('/wedding/', routes.render('wedding'));
-
-//app.get('/logistics/',         routes.render('logistics'));
-//app.get('/logistics/hotels/',  routes.render('logistics/hotels'));
-//app.get('/logistics/outings/', routes.render('logistics/outings'));
-
-//app.get('/registry/', routes.render('registry'));
-/// Modified to use auth. 
-/*
-app.get('/registry/',
-  ensureAuthenticated, function(req, res) {
-    res.render('registry', { user: req.user});
-  });
- */ 
 app.get('/registry/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.render('registry', { user: req.user });
     console.log(req.user);
   });
-
-app.get('/wedding/',
-  ensureLoggedIn('/login'),
-  function(req, res) {
-    res.send('Hello ' + req.user.username);
-  });
   
-app.get('/logistics/',
+  app.get('/logistics/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.redirect('logistics' + req.user.username);
+    res.render('logistics', { user: req.user });
+    console.log(req.user);
   });
   
 app.get('/logistics/hotels/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.send('Hello ' + req.user.username);
-  });
+    res.render('logistics/hotels', { user: req.user });
+    console.log(req.user);
+  });  
 
-app.get('/logistics/outings/',
+app.get('/logistics/hotels/outings/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.send('Hello ' + req.user.username);
+    res.render('logistics/hotels/outings', { user: req.user });
+    console.log(req.user);
   });
 
+app.get('/wedding/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('wedding', { user: req.user });
+    console.log(req.user);
+  });
+ 
 //basic login page. 
 app.get('/login',
   function(req, res) {
@@ -196,10 +186,24 @@ app.post('/login', passport.authenticate('local', {
   failureRedirect: '/auth/login/failure'
 }));
 
+app.get('/rsvp/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('rsvp', { user: req.user });
+    console.log(req.user);
+  });
 
-app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
+app.get('/rsvp/brunch/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('rsvp/brunch', { user: req.user });
+    console.log(req.user);
+  });
+
+
+//app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
-app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
+//app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
 app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 app.get( '/rsvp/brunch/:invitation_key', routes.rsvp.login);
 app.get( '/rsvp/:invitation_key',        routes.rsvp.login);
