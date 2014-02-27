@@ -170,17 +170,17 @@ passport.use('local', new LocalStrategy(function(username, password, done) {
   });
 }));
 
-auth.validPassword = function(password){
- return this.password === password;
-};
+//auth.validPassword = function(password){
+// return this.password === password;
+//};
 
-auth.seralizeUser = function(user, done){
- done(null, user);
-};
+//auth.seralizeUser = function(user, done){
+// done(null, user);
+//};
 
-auth.deseralizeUser = function(obj, done){
- done(null, obj);
-};
+//auth.deseralizeUser = function(obj, done){
+// done(null, obj);
+//};
 
 
 
