@@ -14,7 +14,7 @@ var combo   = require('combohandler'),
 // Required Config additions of passport and flash
     var flash = require("connect-flash");
     var passport = require("passport");
-	LocalStrategy = require('passport-local').Strategy;
+	var LocalStrategy = require('passport-local').Strategy;
 	var Sequelize = require('sequelize');
 	var PassportLocalStrategy = require('passport-local').Strategy;
 
@@ -124,6 +124,9 @@ var User = sequelize.define('user', {
 });
 
 User.sync();
+
+// test 2 for local strat. 
+	
 
 // Auth Methods
 var auth = {};
