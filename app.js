@@ -150,7 +150,7 @@ app.get('/registry/',
 app.get('/registry/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.send('Hello ' + req.user.username);
+    res.render('registry', { user: req.user });
   });
 
 app.get('/wedding/',
