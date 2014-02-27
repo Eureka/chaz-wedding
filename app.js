@@ -139,10 +139,9 @@ app.get('/registry/',
   });
  */ 
   
-app.get('/registry/', passport.ensureAuthenticated, function(req, res){
-	res.redirect('registry');
-	});
-
+app.get('/', passport.ensureAuthenicated, function(req, res){
+    res.redirect('/acquisition');
+  }); 
 
 app.get('/wedding/',
   ensureLoggedIn('/login'),
