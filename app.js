@@ -114,6 +114,16 @@ if (config.isDevelopment) {
     app.use(middleware.error);
 }
 
+// logged in func
+ function loggedIn(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
+
+
 // -- Routes -------------------------------------------------------------------
 
 app.get('/', routes.render('home'));
