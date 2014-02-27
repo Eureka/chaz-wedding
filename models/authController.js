@@ -64,7 +64,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
-
+/*
  function loggedIn(req, res, next) {
   if (req.user) {
     next();
@@ -74,7 +74,7 @@ passport.deserializeUser(function(user, done) {
 };
 
 module.exports = loggedIn;
-/*
+
 exports.ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
     res.redirect('/login');

@@ -3,8 +3,6 @@ var combo   = require('combohandler'),
     exphbs  = require('express3-handlebars'),
     state   = require('express-state'),
 	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn,
-	passportexpresshelper = require('passport-expresshelper');
-
 
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
@@ -149,9 +147,11 @@ app.get('/registry/',
     res.render('registry', { user: req.user});
   });
  */ 
-app.get('/registry/', loggedIn, function(req, res, next) {
-// if req.user exists. Load the registry page
-});
+app.get('/registry/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.send('Hello ' + req.user.username);
+  });
 
 app.get('/wedding/',
   ensureLoggedIn('/login'),
@@ -183,6 +183,11 @@ app.get('/login',
     res.redirect('/welcome/');
   });
 
+app.get('/logout',
+  function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });
 
 // route to authenticate the user
 app.post('/login', passport.authenticate('local', { 
