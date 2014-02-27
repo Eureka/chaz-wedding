@@ -3,8 +3,6 @@ var PassportLocalStrategy = require('passport-local').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var userModel  = require('./userModel.js');
 
-
-/*
 var AuthController = {
 
   login: passport.authenticate('local', {
@@ -64,7 +62,7 @@ auth.deserializeUser = function(obj, done){
   done(null, obj);
 };
 
-*/
+module.exports = auth;
 
 /*
 passport.use(new LocalStrategy(function(username, password, done) { 
@@ -120,7 +118,7 @@ passport.deserializeUser(function(user, done) {
 
 ;*/
 
-
+/*
 passport.use(new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password'
@@ -138,4 +136,5 @@ passport.use(new LocalStrategy({
       return done(null, user);
     });
   }
-));
+)); 
+*/
