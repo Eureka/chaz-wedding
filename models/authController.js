@@ -2,6 +2,7 @@ var passport = require('passport');
 var PassportLocalStrategy = require('passport-local').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var userModel  = require('./userModel.js');
+var User = require('./models/user.js').Model;
 
 /*
 var AuthController = {
@@ -86,6 +87,8 @@ passport.use(new LocalStrategy(function(username, password, done) {
 }));
 */
 
+/*
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function(err, user) {
@@ -113,4 +116,26 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) { 
   // Again, read the documentation.
   done(null, user);
-});
+})
+
+;*/
+
+
+passport.use(new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password'
+  },
+  function(username, password, done) {
+    User.findOne({ username: username }, function(err, user) {
+      console.log('entrou');
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
