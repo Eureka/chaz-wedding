@@ -153,22 +153,18 @@ User.sync();
 passport.use('local', new LocalStrategy(function(username, password, done) {
   //async code waits until next()
   process.nextTick(function() {
-    //searches the database for the user
-    //that matches the username|e-mail and password provided
-    models.User.checkCredentials(username, password, function(err, user) {
-      if (err) {
-        return done(err);
+    var User = require('./User').User;
+    User.find({username: username}).success(function(user){
+      if (!user){
+        return done(null, false, { message: 'Nobody here by that name'} );
       }
-
-      //user is not found
-      if (!user) {
-        return done(null, false, {message: 'Unknown user ' + username});
+      if (user.password !== password){
+        return done(null, false, { message: 'Wrong password'} );
       }
-
-      return done(null, user);
+      return done(null, { username: user.username });
     });
-  });
-}));
+  }
+);
 
 //auth.validPassword = function(password){
 // return this.password === password;
