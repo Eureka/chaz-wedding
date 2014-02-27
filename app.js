@@ -173,11 +173,11 @@ app.post('/login', function(req, res, next) {
     if (err) { return next(err); }
     if (!user) {
       req.session.messages =  [info.message];
-      return res.redirect('/login');
+      return res.redirect('/auth/login/failed');
     }
     req.logIn(user, function(err) {
       if (err) { return next(err); }
-      return res.redirect('/');
+      return res.redirect('/auth/login/success');
     });
   })(req, res, next);
 });
