@@ -67,11 +67,15 @@ passport.use(new LocalStrategy(function(username, password, done) {
   if (username === 'foo' && password === 'bar')
   {
     //done(null, { user: username });
+    console.log(username);
+    console.log(password);
     return done(null, false, { message: 'Nobody here by that name'} );
   }
   else
   {
     //done(null, false);
+    console.log(username);
+    console.log(password);
     return done(null, false, { message: 'Wrong password'} );
     
   }
