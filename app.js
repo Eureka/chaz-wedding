@@ -128,8 +128,8 @@ User.sync();
 // Auth Methods
 var auth = {};
  auth.localStrategy = new PassportLocalStrategy({
-	username: 'username',
-	password: 'password'
+	usernameField: 'username',
+	passwordField: 'password'
  },
 
   function (username, password, done){
