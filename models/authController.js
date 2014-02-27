@@ -65,7 +65,18 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+function loggedIn(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
+
+
+/*
 exports.ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
     res.redirect('/login');
 };
+*/

@@ -115,8 +115,6 @@ if (config.isDevelopment) {
 }
 
 // -- Routes -------------------------------------------------------------------
-var checkAuth = require('passport-expresshelper').ensureAuthenticated;
-
 
 app.get('/', routes.render('home'));
 
@@ -141,7 +139,9 @@ app.get('/registry/',
     res.render('registry', { user: req.user});
   });
  */ 
-app.get('/registry/', checkAuth);
+app.get('/registry/', loggedIn, function(req, res, next) {
+// if req.user exists. Load the registry page
+});
 
 app.get('/wedding/',
   ensureLoggedIn('/login'),
@@ -202,16 +202,5 @@ app.get('/combo/:version', [
     combo.combine({rootPath: config.dirs.pub}),
     combo.respond
 ]);
-
-
-// Simple route middleware to ensure user is authenticated.
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
-//function ensureAuthenticated(req, res, next) {
-//  if (req.isAuthenticated()) { return next(); }
-//  res.redirect('/login');
-//}
 
 module.exports = app;
