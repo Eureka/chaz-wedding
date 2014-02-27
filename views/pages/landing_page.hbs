@@ -6,6 +6,7 @@
     <h1><center>Please sign in to view this page.<center></h1>
 
     <form class="resend l-grid" action="/login" method="POST">
+        <input type="hidden" name="_csrf" value="{{_csrf}}">
         <input type="text" name="username" placeholder="Username">
 
         <div class="resend-email l-grid-u">
