@@ -141,9 +141,7 @@ app.get('/registry/',
     res.render('registry', { user: req.user});
   });
  */ 
-app.get('/registry/', function(req, res) {
-	res.redirect('/login');
-	});
+app.get('/registry/', checkAuth);
 
 app.get('/wedding/',
   ensureLoggedIn('/login'),
