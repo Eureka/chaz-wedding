@@ -9,8 +9,7 @@ var combo   = require('combohandler'),
     helpers    = require('./lib/helpers'),
     middleware = require('./middleware'),
     routes     = require('./routes'),
-    database   = require('./models/database'),
-    userModel  = require('./models/userModel'),
+    userModel  = require('./models/userModel.js'),
     AuthController = require('./models/authController.js'),
 
     app = express();
@@ -78,12 +77,12 @@ app.locals({
 
 
 // DB config
-var User = sequelize.define('user', {
-  username: Sequelize.STRING,
-  password: Sequelize.STRING,
-});
+//var User = sequelize.define('user', {
+//  username: Sequelize.STRING,
+//  password: Sequelize.STRING,
+//});
 
-User.sync();
+//User.sync();
 
 
 // -- Middleware ---------------------------------------------------------------
