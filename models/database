@@ -1,0 +1,4 @@
+// --  Database config for sequelize
+var sequelize = new Sequelize('open-marriage', 'postgres', '', {
+	dialect: 'postgres'
+});

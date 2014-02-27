@@ -9,12 +9,14 @@ var combo   = require('combohandler'),
     helpers    = require('./lib/helpers'),
     middleware = require('./middleware'),
     routes     = require('./routes'),
+    database   = require('./models/database'),
+    userModel  = require('./models/userModel'),
+    AuthController = require('./models/authController.js'),
 
     app = express();
 // Required Config additions of passport and flash
     var flash = require("connect-flash");
     var passport = require("passport");
-	var LocalStrategy = require('passport-local').Strategy;
 	var Sequelize = require('sequelize');
 	var PassportLocalStrategy = require('passport-local').Strategy;
 
@@ -85,7 +87,8 @@ app.use(express.favicon(config.dirs.pub + '/favicon.ico'));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(flash());
-app.use(express.cookieSession({ key: 'le.session', secret: 'super secret', cookie: { maxAge: 60000 }}));
+app.use(express.cookieSession(config.session));
+//app.use(express.cookieSession({ key: 'le.session', secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -112,73 +115,6 @@ if (config.isDevelopment) {
 } else {
     app.use(middleware.error);
 }
-
-// --  Database config for sequelize
-var sequelize = new Sequelize('open-marriage', 'postgres', '', {
-	dialect: 'postgres'
-});
-
-var User = sequelize.define('user', {
-	username: Sequelize.STRING,
-	password: Sequelize.STRING,
-});
-
-User.sync();
-
-// test 2 for local strat. 
-	
-
-// Auth Methods
-//var auth = {};
-// auth.localStrategy = new PassportLocalStrategy({
-//	usernameField: 'username',
-//	passwordField: 'password'
-// },
- 
- 
-//  function (username, password, done){
-//    var User = require('./User').User;
-//    User.find({username: username}).success(function(user){
-//      if (!user){
-//        return done(null, false, { message: 'Nobody here by that name'} );
-//      }
-//      if (user.password !== password){
-//        return done(null, false, { message: 'Wrong password'} );
-//      }
-//      return done(null, { username: user.username });
-//    });
-//  }
-//);
-
-passport.use('local', new LocalStrategy(function(username, password, done) {
-  //async code waits until next()
-  process.nextTick(function() {
-    var User = require('./User').User;
-    User.find({username: username}).success(function(user){
-      if (!user){
-        return done(null, false, { message: 'Nobody here by that name'} );
-      }
-      if (user.password !== password){
-        return done(null, false, { message: 'Wrong password'} );
-      }
-      return done(null, { username: user.username });
-    });
-  }
-));
-
-//auth.validPassword = function(password){
-// return this.password === password;
-//};
-
-//auth.seralizeUser = function(user, done){
-// done(null, user);
-//};
-
-//auth.deseralizeUser = function(obj, done){
-// done(null, obj);
-//};
-
-
 
 // -- Routes -------------------------------------------------------------------
 
@@ -278,9 +214,9 @@ app.get('/combo/:version', [
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login');
-}
+//function ensureAuthenticated(req, res, next) {
+//  if (req.isAuthenticated()) { return next(); }
+//  res.redirect('/login');
+//}
 
 module.exports = app;
