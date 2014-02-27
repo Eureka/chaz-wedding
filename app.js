@@ -144,10 +144,10 @@ app.get('/welcome/', routes.render('landing_page'));
 
 //app.get('/registry/', routes.render('registry'));
 /// Modified to use auth. 
-app.get('/registry/',
-  ensureAuthenticated, function(req, res) {
-    res.render('registry', { user: req.user});
-  });
+//app.get('/registry/',
+//  ensureLoggedIn, function(req, res) {
+//    res.render('registry', { user: req.user});
+//  });
 
 app.get('/wedding/',
   ensureLoggedIn('/login'),
