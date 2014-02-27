@@ -77,6 +77,15 @@ app.locals({
 });
 
 
+// DB config
+var User = sequelize.define('user', {
+  username: Sequelize.STRING,
+  password: Sequelize.STRING,
+});
+
+User.sync();
+
+
 // -- Middleware ---------------------------------------------------------------
 
 if (config.isDevelopment) {
