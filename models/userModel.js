@@ -12,9 +12,9 @@ var User = sequelize.define('user', {
   fullName: Sequelize.TEXT,
   address: Sequelize.TEXT,
   allow_guests: Sequelize.INTEGER,
-  allow_children: Sequelize.BOOLEAN, defaultValue: false,
+  allow_children: Sequelize.BOOLEAN,
   is_attending: Sequelize.BOOLEAN,
-  email_sent: Sequelize.BOOLEAN, defaultValue: false,
+  email_sent: Sequelize.BOOLEAN,
   meal_choice: Sequelize.ARRAY(Sequelize.TEXT)
   
 });
