@@ -31,40 +31,6 @@ var AuthController = {
   },
 };
 
-var auth = {};
-  auth.localStrategy = new PassportLocalStrategy({
-    username: 'username',
-    password: 'password'
-  },
-
-  function (username, password, done){
-    var User = require('./User').User;
-    User.find({username: username}).success(function(user){
-      if (!user){
-        return done(null, false, { message: 'Nobody here by that name'} );
-      }
-      if (user.password !== password){
-        return done(null, false, { message: 'Wrong password'} );
-      }
-      return done(null, { username: user.username });
-    });
-  }
-);
-
-auth.validPassword = function(password){
-  return this.password === password;
-};
-
-auth.serializeUser = function(user, done){
-  done(null, user);
-};
-
-auth.deserializeUser = function(obj, done){
-  done(null, obj);
-};
-
-module.exports = auth;
-
 */
 
 
@@ -98,57 +64,3 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
-/*
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-
-
-passport.serializeUser(function(user, done) { 
-  // please read the Passport documentation on how to implement this. We're now
-  // just serializing the entire 'user' object. It would be more sane to serialize
-  // just the unique user-id, so you can retrieve the user object from the database
-  // in .deserializeUser().
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) { 
-  // Again, read the documentation.
-  done(null, user);
-})
-
-;*/
-
-/*
-passport.use(new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
-  },
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      console.log('entrou');
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-)); 
-*/
-

@@ -120,9 +120,9 @@ app.get('/', routes.render('home'));
 //new landing page for login. 
 app.get('/welcome/', routes.render('landing_page'));
 
+app.get('/auth/login/failure', routes.render('auth/login/failure'));
+app.get('/auth/login/success', routes.render('auth/login/success'));
 
-// test auth controller system. 
-//app.get('/authControl/', routes.render('authController'));
 
 //app.get('/wedding/', routes.render('wedding'));
 
