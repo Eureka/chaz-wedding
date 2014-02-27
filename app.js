@@ -125,7 +125,7 @@ if (config.isDevelopment) {
 // -- Routes -------------------------------------------------------------------
 
 //app.get('/', routes.render('home'));
-apt.get('/', routes.render('landing_page'));
+app.get('/', routes.render('landing_page'));
 
 //new landing page for login. 
 app.get('/welcome/', routes.render('landing_page'));
