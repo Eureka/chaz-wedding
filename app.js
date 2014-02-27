@@ -139,11 +139,9 @@ app.get('/registry/',
   });
  */ 
   
-app.get('/registry/',
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login');
-});
+app.get('/registry/', passport.ensureAuthenticated, function(req, res){
+	res.redirect('registry');
+	});
 
 
 app.get('/wedding/',
@@ -212,9 +210,9 @@ app.get('/combo/:version', [
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login');
-}
+//function ensureAuthenticated(req, res, next) {
+//  if (req.isAuthenticated()) { return next(); }
+//  res.redirect('/login');
+//}
 
 module.exports = app;
