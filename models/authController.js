@@ -1,4 +1,6 @@
 var passport = require('passport');
+var PassportLocalStrategy = require('passport-local').Strategy;
+
 var AuthController = {
 
   login: passport.authenticate('local', {
