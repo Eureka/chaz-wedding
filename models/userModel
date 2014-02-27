@@ -1,5 +1,4 @@
 	var Sequelize = require('sequelize');
-	var pg = require('pg').native;
 	var PassportLocalStrategy = require('passport-local').Strategy;
 	var flash = require("flash");
     var passport = require("passport");
