@@ -15,8 +15,9 @@ var User = sequelize.define('user', {
   allow_children: Sequelize.BOOLEAN,
   is_attending: Sequelize.BOOLEAN,
   email_sent: Sequelize.BOOLEAN,
-  meal_choice: Sequelize.ARRAY(Sequelize.TEXT)
-  
+  meal_choice: Sequelize.ARRAY(Sequelize.TEXT),
+  is_admin: Sequelize.BOOLEAN 
+
 });
 
 User.sync();
