@@ -76,3 +76,16 @@ passport.use(new LocalStrategy(function(username, password, done) {
     
   }
 }));
+
+passport.serializeUser(function(user, done) { 
+  // please read the Passport documentation on how to implement this. We're now
+  // just serializing the entire 'user' object. It would be more sane to serialize
+  // just the unique user-id, so you can retrieve the user object from the database
+  // in .deserializeUser().
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) { 
+  // Again, read the documentation.
+  done(null, user);
+});

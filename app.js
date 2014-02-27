@@ -167,6 +167,8 @@ app.get('/login',
     res.redirect('/welcome/');
   });
 
+/*
+
 // Post Login Stuff.
 app.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
@@ -181,7 +183,13 @@ app.post('/login', function(req, res, next) {
     });
   })(req, res, next);
 });
+*/
 
+// route to authenticate the user
+app.post('/login', passport.authenticate('local', { 
+  successRedirect: '/accessed',
+  failureRedirect: '/access'
+}));
 
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
