@@ -66,10 +66,13 @@ passport.use(new LocalStrategy(function(username, password, done) {
   // insert your MongoDB check here. For now, just a simple hardcoded check.
   if (username === 'foo' && password === 'bar')
   {
-    done(null, { user: username });
+    //done(null, { user: username });
+    return done(null, false, { message: 'Nobody here by that name'} );
   }
   else
   {
-    done(null, false);
+    //done(null, false);
+    return done(null, false, { message: 'Wrong password'} );
+    
   }
 }));
