@@ -146,7 +146,7 @@ app.get('/wedding/',
 app.get('/logistics',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.send(routes.render('logistics') + req.user.username);
+    res.redirect('logistics' + req.user.username);
   });
   
 app.get('/logistics/hotels/',
