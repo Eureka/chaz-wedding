@@ -76,15 +76,6 @@ app.locals({
 });
 
 
-// DB config
-//var User = sequelize.define('user', {
-//  username: Sequelize.STRING,
-//  password: Sequelize.STRING,
-//});
-
-//User.sync();
-
-
 // -- Middleware ---------------------------------------------------------------
 
 if (config.isDevelopment) {
@@ -97,12 +88,9 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(flash());
 app.use(express.cookieSession(config.session));
-//app.use(express.cookieSession({ key: 'le.session', secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
-// broken with the express.session config above. 
-//app.use(express.cookieSession(config.session));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
