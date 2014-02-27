@@ -11,7 +11,7 @@ var User = sequelize.define('user', {
   password: Sequelize.STRING,
   fullName: Sequelize.TEXT,
   address: Sequelize.TEXT,
-  allow_guests: Sequelize.INT,
+  allow_guests: Sequelize.INTEGER,
   allow_children: Sequelize.BOOLEAN, defaultValue: false,
   is_attending: Sequelize.BOOLEAN,
   email_sent: Sequelize.BOOLEAN, defaultValue: false,
