@@ -143,7 +143,7 @@ app.get('/wedding/',
     res.send('Hello ' + req.user.username);
   });
   
-app.get('/logistics',
+app.get('/logistics/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.redirect('logistics' + req.user.username);
