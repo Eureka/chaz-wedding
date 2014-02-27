@@ -144,10 +144,10 @@ app.get('/logistics/hotels/',
     console.log(req.user);
   });  
 
-app.get('/logistics/hotels/outings/',
+app.get('/logistics/outings/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.render('logistics/hotels/outings', { user: req.user });
+    res.render('logistics/outings', { user: req.user });
     console.log(req.user);
   });
 
