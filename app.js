@@ -132,10 +132,18 @@ app.get('/auth/login/success', routes.render('auth/login/success'));
 
 //app.get('/registry/', routes.render('registry'));
 /// Modified to use auth. 
+/*
 app.get('/registry/',
   ensureAuthenticated, function(req, res) {
     res.render('registry', { user: req.user});
   });
+ */ 
+  
+app.get('/registry/',
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login');
+});
 
 
 app.get('/wedding/',
