@@ -151,6 +151,7 @@ app.get('/registry/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.render('registry', { user: req.user });
+    console.log(req.user);
   });
 
 app.get('/wedding/',
