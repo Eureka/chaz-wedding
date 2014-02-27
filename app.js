@@ -112,16 +112,6 @@ if (config.isDevelopment) {
     app.use(middleware.error);
 }
 
-// logged in func
- function loggedIn(req, res, next) {
-  if (req.user) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-};
-
-
 // -- Routes -------------------------------------------------------------------
 
 //app.get('/', routes.render('home'));
@@ -189,14 +179,14 @@ app.post('/login', passport.authenticate('local', {
 app.get('/rsvp/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.render('rsvp', { user: req.user });
+    res.render('rsvp.pub', { user: req.user });
     console.log(req.user);
   });
 
 app.get('/rsvp/brunch/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.render('rsvp/brunch', { user: req.user });
+    res.render('rsvp.brunch', { user: req.user });
     console.log(req.user);
   });
 
