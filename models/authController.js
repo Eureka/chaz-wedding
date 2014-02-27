@@ -86,7 +86,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-  var User = require('../User').User;
     User.findOne({ username: username }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
