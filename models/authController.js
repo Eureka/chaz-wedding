@@ -77,7 +77,8 @@ passport.use(new LocalStrategy(function(username, password, done) {
     console.log("should have passed");
     console.log(username);
     console.log(password);
-    return done(null, false, { message: 'Nobody here by that name'} );
+    //return done(null, false, { message: 'Nobody here by that name'} );
+    done(null, { user: username });
   }
   else
   {
@@ -85,8 +86,8 @@ passport.use(new LocalStrategy(function(username, password, done) {
     console.log("should have failed");
     console.log(username);
     console.log(password);
-    return done(null, false, { message: 'Wrong password'} );
-    
+    //return done(null, false, { message: 'Wrong password'} );
+    done(null, false);
   }
 }));
 
