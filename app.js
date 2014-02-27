@@ -133,7 +133,7 @@ app.get('/auth/login/success', routes.render('auth/login/success'));
 //app.get('/registry/', routes.render('registry'));
 /// Modified to use auth. 
 app.get('/registry/',
-  ensureLoggedIn, function(req, res) {
+  ensureAuthenticated, function(req, res) {
     res.render('registry', { user: req.user});
   });
 
