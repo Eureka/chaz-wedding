@@ -188,7 +188,7 @@ app.post('/login', function(req, res, next) {
 // route to authenticate the user
 app.post('/login', passport.authenticate('local', { 
   successRedirect: '/auth/login/success',
-  failureRedirect: '/auth/login/failure'
+  failureRedirect: '/'
 }));
 
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
