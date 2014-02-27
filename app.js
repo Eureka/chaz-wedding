@@ -164,7 +164,7 @@ passport.use('local', new LocalStrategy(function(username, password, done) {
       return done(null, { username: user.username });
     });
   }
-);
+));
 
 //auth.validPassword = function(password){
 // return this.password === password;
