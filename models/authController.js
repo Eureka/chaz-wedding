@@ -65,7 +65,7 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-module.exports = function loggedIn(req, res, next) {
+ function loggedIn(req, res, next) {
   if (req.user) {
     next();
   } else {
@@ -73,7 +73,7 @@ module.exports = function loggedIn(req, res, next) {
   }
 };
 
-
+module.exports = loggedIn;
 /*
 exports.ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
