@@ -91,6 +91,15 @@ passport.use(new LocalStrategy(function(username, password, done) {
   }
 }));
 
+passport.seralizeUser = function(user, done){
+	done(null, user);
+	};
+
+passport.deserializeUser = function(obj, done){
+	done(null, obj);
+	};
+
+
 
 /*
 
