@@ -1,7 +1,7 @@
 var passport = require('passport');
 var PassportLocalStrategy = require('passport-local').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
-
+/*
 var AuthController = {
 
   login: passport.authenticate('local', {
@@ -28,7 +28,7 @@ var AuthController = {
     res.end();
   },
 };
-/*
+
 var auth = {};
   auth.localStrategy = new PassportLocalStrategy({
     username: 'username',
@@ -63,6 +63,9 @@ auth.deserializeUser = function(obj, done){
 
 */
 passport.use(new LocalStrategy(function(username, password, done) { 
+	username: 'username',
+	password: 'password',
+	},
   // insert your MongoDB check here. For now, just a simple hardcoded check.
   if (username === 'foo' && password === 'bar')
   {
