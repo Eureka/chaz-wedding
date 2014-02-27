@@ -1,6 +1,5 @@
 	var Sequelize = require('sequelize');
 	var PassportLocalStrategy = require('passport-local').Strategy;
-	var flash = require("flash");
     var passport = require("passport");
 	
 var User = sequelize.define('user', {
