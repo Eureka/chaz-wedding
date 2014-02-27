@@ -190,7 +190,7 @@ app.post('/login', function(req, res, next) {
 
 app.post('/login', passport.authenticate('local', { 
   successRedirect: '/auth/login/success',
-  failureRedirect: '/fail'
+  failureRedirect: '/auth/login/failure'
 }));
 
 /*
