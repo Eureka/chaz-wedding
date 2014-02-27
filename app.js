@@ -188,7 +188,7 @@ app.post('/login', function(req, res, next) {
 // route to authenticate the user
 
 
-app.post('/login', auth('local', { 
+app.post('/login', passport.authenticate('local', { 
   successRedirect: '/auth/login/success',
   failureRedirect: '/fail'
 }));

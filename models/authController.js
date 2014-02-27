@@ -3,6 +3,7 @@ var PassportLocalStrategy = require('passport-local').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var userModel  = require('./userModel.js');
 
+/*
 var AuthController = {
 
   login: passport.authenticate('local', {
@@ -64,12 +65,16 @@ auth.deserializeUser = function(obj, done){
 
 module.exports = auth;
 
-/*
+*/
+
+
 passport.use(new LocalStrategy(function(username, password, done) { 
   // insert your MongoDB check here. For now, just a simple hardcoded check.
+  console.log("local envoked");
   if (username === 'foo' && password === 'bar')
   {
     //done(null, { user: username });
+    console.log("should have passed");
     console.log(username);
     console.log(password);
     return done(null, false, { message: 'Nobody here by that name'} );
@@ -77,13 +82,14 @@ passport.use(new LocalStrategy(function(username, password, done) {
   else
   {
     //done(null, false);
+    console.log("should have failed");
     console.log(username);
     console.log(password);
     return done(null, false, { message: 'Wrong password'} );
     
   }
 }));
-*/
+
 
 /*
 
@@ -138,3 +144,4 @@ passport.use(new LocalStrategy({
   }
 )); 
 */
+
