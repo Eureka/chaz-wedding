@@ -90,6 +90,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 // broken with the express.session config above. 
 //app.use(express.cookieSession(config.session));
+app.use(express.cookieSession({ key: 'le.session', secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
