@@ -85,12 +85,12 @@ app.use(express.favicon(config.dirs.pub + '/favicon.ico'));
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(flash());
+app.use(express.cookieSession({ key: 'le.session', secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
 // broken with the express.session config above. 
 //app.use(express.cookieSession(config.session));
-app.use(express.cookieSession({ key: 'le.session', secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -216,7 +216,7 @@ app.get('/login',
 
 // Post Login Stuff.
 app.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
+  passport.authenticate('PassportLocalStrategy', function(err, user, info) {
     if (err) { return next(err); }
     if (!user) {
       req.session.messages =  [info.message];
