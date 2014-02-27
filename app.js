@@ -143,10 +143,10 @@ app.get('/wedding/',
     res.send('Hello ' + req.user.username);
   });
   
-app.get('/logistics/',
+app.get('/logistics',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.send('Hello ' + req.user.username);
+    res.send(routes.render('logistics') + req.user.username);
   });
   
 app.get('/logistics/hotels/',
@@ -167,42 +167,14 @@ app.get('/login',
     res.redirect('/welcome/');
   });
 
-/*
-
-// Post Login Stuff.
-app.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
-    if (err) { return next(err); }
-    if (!user) {
-      req.session.messages =  [info.message];
-      return res.redirect('/auth/login/failed');
-    }
-    req.logIn(user, function(err) {
-      if (err) { return next(err); }
-      return res.redirect('/auth/login/success');
-    });
-  })(req, res, next);
-});
-*/
 
 // route to authenticate the user
-
-
 app.post('/login', passport.authenticate('local', { 
   successRedirect: '/auth/login/success',
   failureRedirect: '/auth/login/failure'
 }));
 
-/*
-// login
-app.get('/login', user.login);
-app.post('/login',
-  passport.authenticate('local', { 
-    successRedirect: '/',
-    failureRedirect: '/login' 
-  })
-);
-*/
+
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
 app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
@@ -231,9 +203,9 @@ app.get('/combo/:version', [
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-//function ensureAuthenticated(req, res, next) {
-//  if (req.isAuthenticated()) { return next(); }
-//  res.redirect('/login');
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login');
 //}
 
 module.exports = app;
