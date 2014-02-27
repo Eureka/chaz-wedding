@@ -129,25 +129,46 @@ User.sync();
 	
 
 // Auth Methods
-var auth = {};
- auth.localStrategy = new PassportLocalStrategy({
-	usernameField: 'username',
-	passwordField: 'password'
- },
+//var auth = {};
+// auth.localStrategy = new PassportLocalStrategy({
+//	usernameField: 'username',
+//	passwordField: 'password'
+// },
+ 
+ 
+//  function (username, password, done){
+//    var User = require('./User').User;
+//    User.find({username: username}).success(function(user){
+//      if (!user){
+//        return done(null, false, { message: 'Nobody here by that name'} );
+//      }
+//      if (user.password !== password){
+//        return done(null, false, { message: 'Wrong password'} );
+//      }
+//      return done(null, { username: user.username });
+//    });
+//  }
+//);
 
-  function (username, password, done){
-    var User = require('./User').User;
-    User.find({username: username}).success(function(user){
-      if (!user){
-        return done(null, false, { message: 'Nobody here by that name'} );
+passport.use('local', new LocalStrategy(function(username, password, done) {
+  //async code waits until next()
+  process.nextTick(function() {
+    //searches the database for the user
+    //that matches the username|e-mail and password provided
+    models.User.checkCredentials(username, password, function(err, user) {
+      if (err) {
+        return done(err);
       }
-      if (user.password !== password){
-        return done(null, false, { message: 'Wrong password'} );
+
+      //user is not found
+      if (!user) {
+        return done(null, false, {message: 'Unknown user ' + username});
       }
-      return done(null, { username: user.username });
+
+      return done(null, user);
     });
-  }
-);
+  });
+}));
 
 auth.validPassword = function(password){
  return this.password === password;
@@ -219,7 +240,7 @@ app.get('/login',
 
 // Post Login Stuff.
 app.post('/login', function(req, res, next) {
-  passport.authenticate('PassportLocalStrategy', function(err, user, info) {
+  passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
     if (!user) {
       req.session.messages =  [info.message];
