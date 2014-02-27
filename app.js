@@ -92,7 +92,6 @@ app.use(express.cookieSession(config.session));
 app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.dynamicHelpers(passportexpresshelper.dynamicHelpers);
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
