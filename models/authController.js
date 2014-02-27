@@ -59,3 +59,15 @@ auth.serializeUser = function(user, done){
 auth.deserializeUser = function(obj, done){
   done(null, obj);
 };
+
+passport.use(new LocalStrategy(function(username, password, done) { 
+  // insert your MongoDB check here. For now, just a simple hardcoded check.
+  if (username === 'foo' && password === 'bar')
+  {
+    done(null, { user: username });
+  }
+  else
+  {
+    done(null, false);
+  }
+}));
