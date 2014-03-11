@@ -2,13 +2,21 @@ var combo   = require('combohandler'),
     express = require('express'),
     exphbs  = require('express3-handlebars'),
     state   = require('express-state'),
+	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn,
 
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
     middleware = require('./middleware'),
     routes     = require('./routes'),
+    userModel  = require('./models/userModel.js'),
+    AuthController = require('./models/authController.js'),
 
     app = express();
+// Required Config additions of passport and flash
+    var flash = require("connect-flash");
+    var passport = require("passport");
+	var Sequelize = require('sequelize');
+	var PassportLocalStrategy = require('passport-local').Strategy;
 
 // -- Configure ----------------------------------------------------------------
 
@@ -19,6 +27,7 @@ app.set('views', config.dirs.views);
 app.set('view engine', 'hbs');
 app.set('state namespace', 'YUI.Env.LE');
 app.enable('strict routing');
+
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -65,6 +74,7 @@ app.locals({
     min: config.isProduction ? '-min' : ''
 });
 
+
 // -- Middleware ---------------------------------------------------------------
 
 if (config.isDevelopment) {
@@ -74,7 +84,12 @@ if (config.isDevelopment) {
 app.use(express.compress());
 app.use(express.favicon(config.dirs.pub + '/favicon.ico'));
 app.use(express.cookieParser());
+app.use(express.bodyParser());
+app.use(flash());
 app.use(express.cookieSession(config.session));
+app.use(express.session({ secret: 'super secret', cookie: { maxAge: 60000 }}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -99,19 +114,86 @@ if (config.isDevelopment) {
 
 // -- Routes -------------------------------------------------------------------
 
-app.get('/', routes.render('home'));
+//app.get('/', routes.render('home'));
+app.get('/', routes.render('landing_page'));
 
-app.get('/wedding/', routes.render('wedding'));
+//new landing page for login. 
+app.get('/welcome/', routes.render('landing_page'));
 
-app.get('/logistics/',         routes.render('logistics'));
-app.get('/logistics/hotels/',  routes.render('logistics/hotels'));
-app.get('/logistics/outings/', routes.render('logistics/outings'));
+app.get('/auth/login/failure', routes.render('auth/login/failure'));
+app.get('/auth/login/success', routes.render('auth/login/success'));
 
-app.get('/registry/', routes.render('registry'));
+app.get('/registry/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('registry', { user: req.user });
+    console.log(req.user);
+  });
+  
+  app.get('/logistics/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('logistics', { user: req.user });
+    console.log(req.user);
+  });
+  
+app.get('/logistics/hotels/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('logistics/hotels', { user: req.user });
+    console.log(req.user);
+  });  
 
-app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
+app.get('/logistics/outings/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('logistics/outings', { user: req.user });
+    console.log(req.user);
+  });
+
+app.get('/wedding/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('wedding', { user: req.user });
+    console.log(req.user);
+  });
+ 
+//basic login page. 
+app.get('/login',
+  function(req, res) {
+    res.redirect('/welcome/');
+  });
+
+app.get('/logout',
+  function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
+// route to authenticate the user
+app.post('/login', passport.authenticate('local', { 
+  successRedirect: '/auth/login/success',
+  failureRedirect: '/auth/login/failure'
+}));
+
+app.get('/rsvp/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('rsvp.pub', { user: req.user });
+    console.log(req.user);
+  });
+
+app.get('/rsvp/brunch/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('rsvp.brunch', { user: req.user });
+    console.log(req.user);
+  });
+
+
+//app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
-app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
+//app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
 app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 app.get( '/rsvp/brunch/:invitation_key', routes.rsvp.login);
 app.get( '/rsvp/:invitation_key',        routes.rsvp.login);
