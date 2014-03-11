@@ -340,7 +340,7 @@ a.is-button-negative {
         display: inline-block;
         max-height: none;
         /* Fixes Firefox's issue with `auto` */
-        width: 60em;
+        width: 50em;
     }
     .nav .nav-item {
         width: auto;
