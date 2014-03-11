@@ -59,7 +59,8 @@ app.locals({
         logistics: [
             {id: 'logistics', url: '/logistics/',         label: 'Logistics'},
             {id: 'hotels',    url: '/logistics/hotels/',  label: 'Hotels'},
-            {id: 'outings',   url: '/logistics/outings/', label: 'Outings'}
+            {id: 'outings',   url: '/logistics/outings/', label: 'Outings'},
+            {id: 'ride_share',   url: '/logistics/ride_share/', label: 'Ride Share'}
         ]
     },
 
@@ -155,6 +156,13 @@ app.get('/logistics/outings/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.render('logistics/outings', { user: req.user });
+    console.log(req.user);
+  });
+
+app.get('/logistics/ride_share/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('logistics/ride_share', { user: req.user });
     console.log(req.user);
   });
 
