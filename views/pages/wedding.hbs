@@ -10,12 +10,12 @@
 <div class="l-wrap">
     <h1 class="ann">
         <span class="ann-secondary">Wedding</span>
-        <span class="ann-primary">Month Day, 2014</span>
+        <span class="ann-primary">June 21, 2014</span>
         <span class="ann-secondary">Sheridan, WY</span>
     </h1>
 
     <ol class="cal l-contain l-grid">
-        {{#day "Friday 4"}}
+        {{#day "Friday 20"}}
             {{addDayEvent "evening-before"
                 start = "8pm"
                 end   = "1am"
@@ -25,21 +25,21 @@
             {{> day/events}}
         {{/day}}
 
-        {{#day "Saturday 5" primary=true}}
+        {{#day "Saturday 21" primary=true}}
             {{addDayEvent "ceremony"
-                start = "3:30pm"
+                start = "4:00pm"
                 desc  = "Wedding Ceremony"}}
 
             {{addDayEvent "ceremony"
                 start = "5pm"
-                end   = "10pm"
+                end   = ""
                 desc  = "Reception"}}
 
             {{> day/header}}
             {{> day/events}}
         {{/day}}
 
-        {{#day "Sunday 6"}}
+        {{#day "Sunday 22"}}
             {{addDayEvent "brunch"
                 start = "11am"
                 end   = "1pm"

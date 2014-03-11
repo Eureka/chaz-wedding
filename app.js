@@ -120,8 +120,15 @@ app.get('/', routes.render('landing_page'));
 //new landing page for login. 
 app.get('/welcome/', routes.render('landing_page'));
 
-app.get('/auth/login/failure', routes.render('auth/login/failure'));
-app.get('/auth/login/success', routes.render('auth/login/success'));
+app.get('/auth/login/failure', routes.render('/login'));
+app.get('/auth/login/success', routes.render('/wedding'));
+
+app.get('/home/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('home', { user: req.user });
+    console.log(req.user);
+  });
 
 app.get('/registry/',
   ensureLoggedIn('/login'),
