@@ -197,8 +197,8 @@ app.get('/logout',
 
 // route to authenticate the user
 app.post('/login', passport.authenticate('local', { 
-  successRedirect: '/auth/login/success',
-  failureRedirect: '/auth/login/failure'
+  successRedirect: '/wedding/',
+  failureRedirect: '/login/'
 }));
 
 app.get('/rsvp/',
