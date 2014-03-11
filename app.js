@@ -52,7 +52,9 @@ app.locals({
         {id: 'wedding',   url: '/wedding/',   label: 'Wedding'},
         {id: 'logistics', url: '/logistics/', label: 'Logistics'},
         {id: 'registry',  url: '/registry/',  label: 'Registry'},
-        {id: 'rsvp',      url: '/rsvp/',      label: 'RSVP'}
+        {id: 'rsvp',      url: '/rsvp/',      label: 'RSVP'},
+        {id: 'party_itinerary',      url: '/party_itinerary/',      label: 'Wedding Party Itinerary'}
+
     ],
 
     subnav: {
@@ -172,6 +174,13 @@ app.get('/wedding/',
     res.render('wedding', { user: req.user });
     console.log(req.user);
   });
+ 
+app.get('/party_itinerary/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('party_itinerary', { user: req.user });
+    console.log(req.user);
+  }); 
  
 //basic login page. 
 app.get('/login',
