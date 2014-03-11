@@ -125,7 +125,7 @@ app.get('/', routes.render('landing_page'));
 app.get('/welcome/', routes.render('landing_page'));
 
 app.get('/auth/login/failure', routes.render('/login'));
-app.get('/auth/login/success', routes.render('/wedding'));
+app.get('/auth/login/success', routes.render('/wedding/'));
 
 app.get('/home/',
   ensureLoggedIn('/login'),
