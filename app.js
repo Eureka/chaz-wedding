@@ -53,7 +53,7 @@ app.locals({
         {id: 'logistics', url: '/logistics/', label: 'Logistics'},
         {id: 'registry',  url: '/registry/',  label: 'Registry'},
         {id: 'rsvp',      url: '/rsvp/',      label: 'RSVP'},
-        {id: 'party_itinerary',      url: '/party_itinerary/',      label: 'Wedding Party Itinerary'}
+        {id: 'party_itinerary',      url: '/party_itinerary/',      label: 'Itinerary'}
 
     ],
 
