@@ -13,7 +13,7 @@ address.details-content {
     .details-group .l-grid-u {
         display: inline-block;
         *display: inline;
-        width: 80%;
+        width: 50%;
         vertical-align: top;
     }
     .details-content {
