@@ -30,7 +30,7 @@ config = {
     },
 
     email: {
-        from: 'IanTest <eureka@hacktheory.com>'
+        from: 'C&F Wedding 2014 <cfwedding2014@gmail.com>'
     },
 
     dirs: {
@@ -41,7 +41,7 @@ config = {
         emails  : path.resolve('views/emails/')
     },
 
-    date: new Date('Sat Feb 22 2014 4:30:00 GMT-0400 (EDT)'),
+    date: new Date('Sat June 21 2014 4:00:00 GMT-2300 (MST)'),
 
     version: require('../package').version,
 

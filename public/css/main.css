@@ -254,7 +254,7 @@ a.is-button-negative {
     padding: 1.0675em 0.5em 0.9375em;
 }
 .nav .nav-toggle {
-    width: 900px;
+    width: auto;
     float: right;
     margin: 0;
 }
