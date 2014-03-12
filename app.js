@@ -196,7 +196,7 @@ app.get('/home/',
     res.render('home', { user: req.user });
     console.log(req.user);
   });
-
+/*
 app.get('/registry/',
   ensureLoggedIn('/login'),
   needsGroup('admin'),
@@ -204,7 +204,15 @@ app.get('/registry/',
     res.render('registry', { user: req.user });
     console.log(req.user);
   });
-  
+  */
+ app.get('/registry/',
+  ensureLoggedIn('/login'),
+  needsGroup('admin'),
+  function(req, res) {
+    res.render('registry');
+    console.log(req.user);
+  });
+ 
   app.get('/logistics/',
   ensureLoggedIn('/login'),
   function(req, res) {
