@@ -3,7 +3,7 @@ var combo   = require('combohandler'),
     exphbs  = require('express3-handlebars'),
     state   = require('express-state'),
 	ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn,
-
+	ConnectRoles = require('connect-roles'),
     config     = require('./config'),
     helpers    = require('./lib/helpers'),
     middleware = require('./middleware'),
