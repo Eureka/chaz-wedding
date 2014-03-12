@@ -39,3 +39,5 @@ var needsGroup = function(group) {
       res.send(401, 'Unauthorized');
   };
 };
+
+module.exports = needsGroup;
