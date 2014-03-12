@@ -71,7 +71,7 @@ user.use('access private page', function (req) {
 
 //admin users can access all pages
 user.use(function (req) {
-  if (req.user.role === 'admin') {
+  if (user.groups === 'admin') {
     return true;
   }
 });
