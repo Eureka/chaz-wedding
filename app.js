@@ -165,7 +165,7 @@ var needsGroup = function(group) {
     if (req.user && req.user.group === group)
       next();
     else
-    console.log('debug data: ', 'requser: ', req.user,'Ugroup: ', user.group,'group: ', group);
+    console.log('debug data: ', 'requser: ', req.user,'Ugroup: ', req.user.group,'group: ', group);
       res.send(401, 'Unauthorized');
   };
 };
@@ -209,8 +209,8 @@ app.get('/registry/',
   ensureLoggedIn('/login'),
   needsGroup('admin'),
   function(req, res) {
-    res.render('registry');
-    console.log(req.user);
+    res.render('registry', { user: req.user, groups: req.user.group });
+    console.log(req.user, req.user.group);
   });
  
   app.get('/logistics/',
