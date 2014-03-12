@@ -208,6 +208,7 @@ app.get('/registry/',
  app.get('/registry/',
   ensureLoggedIn('/login'),
   needsGroup('admin'),
+  console.log(req.user, req.group),
   function(req, res) {
     res.render('registry', { user: req.user, groups: req.user.group });
     console.log(req.user, req.user.group);
