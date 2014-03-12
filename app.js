@@ -165,6 +165,7 @@ var needsGroup = function(group) {
   return function(req, res, next) {
   	var myData = req.user;
   	console.log('groupTest: ', myData.group);
+  	console.log('group2Test: ', req.user.group);
     if (myData.group === group)
       next();
     else
