@@ -28,3 +28,14 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
+
+// Require correct groupes. 
+var needsGroup = function(group) {
+  return function(req, res, next) {
+    if (req.user && req.user.group === group)
+      next();
+    else
+    console.log('debug data: ', 'requser: ', req.user,'reqUgroup: ', req.user.group,'group: ', group);
+      res.send(401, 'Unauthorized');
+  };
+};
