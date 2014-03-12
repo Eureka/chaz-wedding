@@ -31,7 +31,7 @@ var User = sequelize.define('user', {
   invite_key: Sequelize.STRING,
   allergies: Sequelize.STRING,
   food_pref: Sequelize.STRING,
-  total_attending: Sequelize.INT,
+  total_attending: Sequelize.INTEGER,
   attending_names: Sequelize.STRING,
   is_attending: Sequelize.BOOLEAN,
   email_sent: Sequelize.BOOLEAN,

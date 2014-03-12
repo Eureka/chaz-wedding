@@ -3,19 +3,19 @@
 2 info using npm@1.3.24
 3 info using node@v0.10.25
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart test.hacktheory.com@1.8.0
-6 info start test.hacktheory.com@1.8.0
+5 info prestart www.cfwedding2014.com@1.8.0
+6 info start www.cfwedding2014.com@1.8.0
 7 verbose unsafe-perm in lifecycle true
-8 info test.hacktheory.com@1.8.0 Failed to exec start script
-9 error test.hacktheory.com@1.8.0 start: `node server.js`
+8 info www.cfwedding2014.com@1.8.0 Failed to exec start script
+9 error www.cfwedding2014.com@1.8.0 start: `node server.js`
 9 error Exit status 8
-10 error Failed at the test.hacktheory.com@1.8.0 start script.
-10 error This is most likely a problem with the test.hacktheory.com package,
+10 error Failed at the www.cfwedding2014.com@1.8.0 start script.
+10 error This is most likely a problem with the www.cfwedding2014.com package,
 10 error not with npm itself.
 10 error Tell the author that this fails on your system:
 10 error     node server.js
 10 error You can get their info via:
-10 error     npm owner ls test.hacktheory.com
+10 error     npm owner ls www.cfwedding2014.com
 10 error There is likely additional logging output above.
 11 error System Linux 2.6.32-431.el6.x86_64
 12 error command "/usr/local/bin/node" "/usr/local/bin/npm" "start"
