@@ -46,6 +46,7 @@ var user = new ConnectRoles({
     var accept = req.headers.accept || '';
     res.status(403);
     if (~accept.indexOf('html')) {
+    	console.log('userGroups: ', user.groups);
       res.render('access-denied', {action: action});
     } else {
       res.send('Access Denied - You don\'t have permission to: ' + action);
@@ -58,7 +59,7 @@ var user = new ConnectRoles({
 ////considered
 user.use(function (req, action) {
   if (!req.isAuthenticated()) return action === 'access home page';
-})
+});
 
 //moderator users can access private page, but
 ////they might not be the only ones so we don't return
@@ -67,7 +68,7 @@ user.use('access private page', function (req) {
   if (req.user.role === 'moderator') {
     return true;
   }
-})
+});
 
 //admin users can access all pages
 user.use(function (req) {
