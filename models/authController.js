@@ -4,20 +4,18 @@ var LocalStrategy = require('passport-local').Strategy;
 var User  = require('./userModel.js');
 
 
-passport.use(new LocalStrategy({usernameField: 'email'},function(username, password, done) { 
-  // insert your MongoDB check here. For now, just a simple hardcoded check.
-  console.log('user.password');
-  console.log("local envoked");
-// var User = require('./userModel.js').User;
-  console.log ('user.username'); 
-   User.find({email: 'email'}).success(function(user){
-      if (!user){
-        return done(null, false);
+passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},function(username, password, done) { 
+  console.log("local envoked", username, password);
+   User.find({where:{email: username}}).success(function(user){
+      if (!username){
+	console.log('No Such User', username);
+        return done(null, false, {message: "incorrect information"});
       }
       if (user.password !== password){
+	console.log('Bad Password: ', password, 'Username: ', username);
         return done(null, false);
       }
-      done(null, { email: user.email });
+      done(null, { email: user.email, password: user.password, groups: user.groups });
     });
   }));
 
