@@ -165,7 +165,7 @@ var needsGroup = function(group) {
     if (req.user && req.user.group === group)
       next();
     else
-    console.log('debug data: ', 'requser: ', req.user,'reqUgroup: ', req.user.group,'group: ', group);
+    console.log('debug data: ', 'requser: ', req.user,'Ugroup: ', user.group,'group: ', group);
       res.send(401, 'Unauthorized');
   };
 };
