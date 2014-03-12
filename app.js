@@ -188,7 +188,7 @@ app.get('/home/',
 app.get('/registry/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.render('registry', { user: req.user });
+    res.render('registry', { user: req.user, groups: req.groups == admin});
     console.log(req.user);
   });
   
