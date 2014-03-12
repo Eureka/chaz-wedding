@@ -163,6 +163,7 @@ if (config.isDevelopment) {
 var needsGroup = function(group) {
   return function(req, res, next) {
     if (req.user && req.user.group === group)
+    console.log('user: ', req.user, 'group: ', group),
       next();
     else
       res.send(401, 'Unauthorized');
