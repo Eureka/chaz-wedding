@@ -22,7 +22,7 @@ var User = sequelize.define('user', {
 });
 */
 
-var User = sequelize.define('user', {
+var User = sequelize.define('guest', {
   email: Sequelize.STRING,
   password: Sequelize.STRING,
   name: Sequelize.TEXT,
