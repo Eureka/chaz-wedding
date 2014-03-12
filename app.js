@@ -163,7 +163,7 @@ if (config.isDevelopment) {
 
 var needsGroup = function(group) {
   return function(req, res, next) {
-  	myData = reg.user;
+  	var myData = reg.user;
   	console.log(myData);
     if (req.user && req.user.group === group)
       next();
