@@ -15,7 +15,7 @@ passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password
 	console.log('Bad Password: ', password, 'Username: ', username);
         return done(null, false);
       }
-      done(null, { email: user.email });
+      done(null, { email: user.email, group: user.groups });
     });
   }));
 
