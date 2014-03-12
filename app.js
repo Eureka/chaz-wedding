@@ -160,6 +160,7 @@ if (config.isDevelopment) {
 }
 
 // Require correct groupes. 
+/*
 var needsGroup = function(group) {
   return function(req, res, next) {
     if (req.user && req.user.group === group)
@@ -170,6 +171,19 @@ var needsGroup = function(group) {
   };
 };
 
+*/
+
+var needsGroup = function(group) {
+  return [
+    passport.authenticate('local'),
+    function(req, res, next) {
+      if (req.user && req.user.group === group)
+        next();
+      else
+        res.send(401, 'Unauthorized');
+    }
+  ];
+};
 
 // -- Routes -------------------------------------------------------------------
 
