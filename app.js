@@ -166,11 +166,13 @@ var needsGroup = function(group) {
   	//var myData = req.user;
   	//console.log('groupTest: ', myData.group);
   	console.log('group2Test: ', req.user.group);
-    if (myData.group === group)
+    if ( req.user.group === group) {
       next();
-    else
+      console.log('yay');
+    } else {
     console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
       res.send(401, 'Unauthorized');
+     }
   };
 };
 
