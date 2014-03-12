@@ -163,12 +163,8 @@ if (config.isDevelopment) {
 
 var needsGroup = function(group) {
   return function(req, res, next) {
-  	var str = req.user;
-  	var arr = str.split(":");
-  	for(var i=0;i<arr.length;i++) {
-    arr[i] = ++arr[i];
-    }
-    console.log(arr);
+  	myData = reg.user;
+  	console.log(myData);
     if (req.user && req.user.group === group)
       next();
     else
