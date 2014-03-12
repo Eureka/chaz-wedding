@@ -38,6 +38,7 @@ app.engine('hbs', exphbs({
     partialsDir  : config.dirs.partials
 }));
 
+/*
 // -- Roles middleware -------------------------------------------------------------------
 var user = new ConnectRoles({
   failureHandler: function (req, res, action) {
@@ -76,6 +77,7 @@ user.use(function (req) {
     return true;
   }
 });
+*/
 
 // -- Locals -------------------------------------------------------------------
 
@@ -146,8 +148,7 @@ app.use(app.router);
 app.use(middleware.slash());
 app.use(express.static(config.dirs.pub));
 app.use(middleware.notfound);
-//app.use(authentication);
-//app.use(user.middleware());
+
 
 if (config.isDevelopment) {
     app.use(express.errorHandler({
@@ -157,6 +158,17 @@ if (config.isDevelopment) {
 } else {
     app.use(middleware.error);
 }
+
+// Require correct groupes. 
+var needsGroup = function(group) {
+  return function(req, res, next) {
+    if (req.user && req.user.group === group)
+      next();
+    else
+      res.send(401, 'Unauthorized');
+  };
+};
+
 
 // -- Routes -------------------------------------------------------------------
 
@@ -187,8 +199,9 @@ app.get('/home/',
 
 app.get('/registry/',
   ensureLoggedIn('/login'),
+  needsGroup('admin'),
   function(req, res) {
-    res.render('registry', { user: req.user, groups: req.groups == admin});
+    res.render('registry', { user: req.user});
     console.log(req.user);
   });
   
