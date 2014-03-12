@@ -183,7 +183,6 @@ app.get('/auth/login/success', routes.render('/wedding/'));
 
 app.get('/admin/',
   ensureLoggedIn('/login'),
-  user.can('access admin page'),
   function(req, res) {
     res.render('views/pages/admin/admin_main', { user: req.user });
     console.log(req.user);
