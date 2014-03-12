@@ -16,6 +16,7 @@ passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password
         return done(null, false);
       }
       req.user.group = {groups: user.groups};
+      console.log (req.user.group);
       done(null, { email: user.email });
     });
   }));
