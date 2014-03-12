@@ -165,6 +165,8 @@ var needsGroup = function(group) {
   return function(req, res, next) {
   	var myData = req.user;
   	console.log(myData);
+  	var splitData = myData.split(" ");
+  	console.log(splitData);
     if (req.user && req.user.group === group)
       next();
     else
