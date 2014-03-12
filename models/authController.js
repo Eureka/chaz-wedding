@@ -7,7 +7,7 @@ var User  = require('./userModel.js');
 passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},function(username, password, done) { 
   console.log("local envoked", username, password);
    User.find({where:{email: username}}).success(function(user){
-      if (!username){
+      if (!user){
 	console.log('No Such User', username);
         return done(null, false, {message: "incorrect information"});
       }
