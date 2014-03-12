@@ -180,8 +180,8 @@ var needsGroup = function(group) {
       if (req.user && req.user.group === group)
         next();
       else
-          console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
-        res.send(401, 'Unauthorized');
+      console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
+     //   res.send(401, 'Unauthorized');
     }
   ];
 };
