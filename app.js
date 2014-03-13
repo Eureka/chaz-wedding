@@ -152,7 +152,7 @@ app.get('/admin/',
   ensureLoggedIn('/login'),
   needsGroup('admin'),
   function(req, res) {
-    res.render('views/pages/admin/admin_main', { user: req.user, groups: req.user.group });
+    res.render('admin/admin_main', { user: req.user, groups: req.user.group });
     console.log(req.user);
   });
 
