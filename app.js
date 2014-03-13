@@ -126,7 +126,7 @@ var needsGroup = function(group) {
   	//var myData = req.user;
   	//console.log('groupTest: ', myData.group);
   	console.log('group2Test: ', req.user.group);
-    if ( req.user.group === group || req.user.group === admin) {
+    if ( req.user.group === group || req.user.group === 'admin') {
       next();
       console.log('yay');
     } else {
