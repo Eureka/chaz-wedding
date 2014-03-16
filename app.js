@@ -241,6 +241,7 @@ app.get('/rsvp/',
     console.log(req.user);
   });
 
+app.post('/rsvp/',                       routes.rsvp.resend);
 
 /*
 app.get('/rsvp/brunch/',
