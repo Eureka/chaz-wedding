@@ -6,6 +6,9 @@ var async = require('async'),
     invs         = require('../lib/invitations'),
     guests       = require('../lib/guests');
 
+    userModel  = require('../models/userModel.js'),
+    AuthController = require('../models/authController.js'),
+
 exports.pub    = pub;
 exports.resend = resend;
 exports.login  = login;
@@ -29,8 +32,10 @@ function pub(req, res, next) {
 }
 
 function resend(req, res, next) {
-    var email = req.body.email.trim();
-
+//    var email = req.body.email.trim();
+	console.log (req.user.email);
+	var email = req.user.email;
+	
     // Always redirect to "/rsvp/" after the wedding.
     if (req.afterWedding) {
         return res.redirect('/rsvp/');
