@@ -22,7 +22,6 @@ function pub(req, res, next) {
     }
 
     if (req.invitation) {
-//	  if (req.user) {
         return next();
     }
 
@@ -33,9 +32,9 @@ function pub(req, res, next) {
 }
 
 function resend(req, res, next) {
-//    var email = req.body.email.trim();
-	console.log (req.user.email);
-	var email = req.user.email;
+	var email = req.body.email.trim();
+	//console.log (req.user.email);
+	//var email = req.user.email;
 	
     // Always redirect to "/rsvp/" after the wedding.
     if (req.afterWedding) {
