@@ -232,14 +232,16 @@ app.post('/login', passport.authenticate('local', {
   failureRedirect: '/login/'
 }));
 
-/*
+
 app.get('/rsvp/',
   ensureLoggedIn('/login'),
   function(req, res) {
-    res.render('routes.rsvp.pub, routes.rsvp.edit', { user: req.user });
+    res.render('/rsvp_new/rsvp', { user: req.user });
     console.log(req.user);
   });
 
+
+/*
 app.get('/rsvp/brunch/',
   ensureLoggedIn('/login'),
   function(req, res) {
@@ -248,12 +250,14 @@ app.get('/rsvp/brunch/',
   });
 */
 
+/*
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
 app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
 app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 app.get( '/rsvp/brunch/:invitation_key', routes.rsvp.login);
 app.get( '/rsvp/:invitation_key',        routes.rsvp.login);
+*/
 
 app.all( '/invitations/:invitation/*',       middleware.auth.ensureInvitation);
 app.get( '/invitations/:invitation/',        routes.invitations.read);
