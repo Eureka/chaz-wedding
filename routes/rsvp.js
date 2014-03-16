@@ -104,16 +104,11 @@ function edit(req, res) {
     var invitation = req.invitation,
         guestsAttending, guestsNeedMeal;
 
-	console.log(req.invite.id);
-	console.log(req.invitaion);
-	console.log(invitation.rsvpd);
-	
-
     res.locals.meals = guests.MEALS;
     res.expose(guests.MEALS, 'MEALS');
-    invitation.rsvpd = req.invite.id;
-	console.log(req.invite.id);
-	console.log(req.invitaion);
+//    invitation.rsvpd = req.invite.id;
+	console.log(user.id);
+	console.log(user.id);
 	console.log(invitation.rsvpd);
 	
     if (!invitation.rsvpd) {
