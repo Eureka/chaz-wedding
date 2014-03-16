@@ -232,6 +232,7 @@ app.post('/login', passport.authenticate('local', {
   failureRedirect: '/login/'
 }));
 
+/*
 app.get('/rsvp/',
   ensureLoggedIn('/login'),
   function(req, res) {
@@ -245,9 +246,9 @@ app.get('/rsvp/brunch/',
     res.render('rsvp.brunch', { user: req.user });
     console.log(req.user);
   });
+*/
 
-
-//app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
+app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
 app.post('/rsvp/',                       routes.rsvp.resend);
 app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
 app.post('/rsvp/brunch/',                routes.rsvp.brunch);
