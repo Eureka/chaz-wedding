@@ -107,7 +107,8 @@ function edit(req, res) {
 
     res.locals.meals = guests.MEALS;
     res.expose(guests.MEALS, 'MEALS');
-console.log(invitation.rsvpd);
+
+ 	   	console.log(req.user);
 
     if (!invitation.rsvpd) {
         return res.render('rsvp/respond');
