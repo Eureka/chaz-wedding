@@ -233,8 +233,9 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 
-app.get('/rsvp/', routes.rsvp.pub, routes.rsvp.edit,
+app.get('/rsvp/',
   ensureLoggedIn('/login'),
+  routes.rsvp.pub, routes.rsvp.edit,
   function(req, res) {
     req.render('routes.rsvp.pub, routes.rsvp.edit', { user: req.user });
     console.log(req.user);
