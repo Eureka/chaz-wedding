@@ -110,7 +110,7 @@ function edit(req, res) {
  	   	console.log(req.user.id);
  	   	console.log(req.user.email);
 
-    if (!invitation.rsvpd) {
+    if (!req.user.id) {
         return res.render('rsvp/respond');
     }
 
