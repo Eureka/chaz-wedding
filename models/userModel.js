@@ -6,22 +6,6 @@ var sequelize = new Sequelize ('open-marriage', 'postgres', null, {
 	dialect: 'postgres'
 });
 
-/*	
-var User = sequelize.define('user', {
-  username: Sequelize.STRING,
-  password: Sequelize.STRING,
-  fullName: Sequelize.TEXT,
-  address: Sequelize.TEXT,
-  allow_guests: Sequelize.INTEGER,
-  allow_children: Sequelize.BOOLEAN,
-  is_attending: Sequelize.BOOLEAN,
-  email_sent: Sequelize.BOOLEAN,
-  meal_choice: Sequelize.ARRAY(Sequelize.TEXT),
-  is_admin: Sequelize.BOOLEAN 
-
-});
-*/
-
 var User = sequelize.define('guest', {
   email: Sequelize.STRING,
   password: Sequelize.STRING,
