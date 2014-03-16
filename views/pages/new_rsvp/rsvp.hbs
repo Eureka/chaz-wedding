@@ -8,7 +8,12 @@
 
 <div class="l-contain">
 
-    <h1><center><center></h1>
+    <h1><center>
+            <h1 class="ann">
+                <span class="ann-primary">{{guestsNames attending=true html=true}},</span>
+                <span class="ann-secondary">Yay, We’re Happy You’ll Be Attending!</span>
+            </h1>
+    <center></h1>
 
     <form class="resend-email l-grid-u" action="/updateUser" method="POST">
         <input type="hidden" name="_csrf" value="{{_csrf}}">
