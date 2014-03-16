@@ -241,7 +241,8 @@ app.get('/rsvp/',
     console.log(req.user);
   });
 
-app.post('/rsvp/',                       routes.rsvp.resend);
+//app.post('/rsvp/',                       routes.rsvp.resend);
+//app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 
 /*
 app.get('/rsvp/brunch/',
@@ -254,12 +255,13 @@ app.get('/rsvp/brunch/',
 
 /*
 app.get( '/rsvp/',                       routes.rsvp.pub, routes.rsvp.edit);
+*/
 app.post('/rsvp/',                       routes.rsvp.resend);
 app.get( '/rsvp/brunch/',                routes.rsvp.brunch);
 app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 app.get( '/rsvp/brunch/:invitation_key', routes.rsvp.login);
 app.get( '/rsvp/:invitation_key',        routes.rsvp.login);
-*/
+
 
 app.all( '/invitations/:invitation/*',       middleware.auth.ensureInvitation);
 app.get( '/invitations/:invitation/',        routes.invitations.read);
