@@ -18,16 +18,25 @@
     <form class="resend l-grid" action="/updateUser" method="POST">
         <input type="hidden" name="_csrf" value="{{_csrf}}">
         <input type="text" name="email" placeholder="Email Address">
+        <input type="password" name="password" placeholder="Password">
+
 
         <div class="resend-email l-grid-u">
-            <input type="password" name="password" placeholder="Password">
+            Title: <input type="text" name="title" placeholder="Title">
+            Full Name: <input type="text" name="name" placeholder="Full Name">
         </div>
 
         <div class="resend-email l-grid-u">
-            <input type="text" name="title" placeholder="Title">
-            <input type="text" name="name" placeholder="Full Name">
+            Allergies: <input type="text" name="allergies" placeholder="Alergies">
+            Food Preferences: <input type="text" name="name" placeholder="Vegetarian/Vegan/None">
         </div>
 
+        <div class="resend-email l-grid-u">
+            Attending: <input type="checkbox" name="attending" value="is_attending"> YES! <input type="checkbox" name="attending" value="not_attending"> No
+            Number Attending: <input type="text" name="number_attending" placeholder="Number Attending">
+            Attending Names: <input type="text" name="attending_names" placeholder="Attending Names">
+        </div>
+        
         <div class="resend-submit l-grid-u">
             <button type="submit" data-icon="s">Login</button>
         </div>
