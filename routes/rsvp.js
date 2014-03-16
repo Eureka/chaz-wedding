@@ -107,9 +107,9 @@ function edit(req, res) {
     res.locals.meals = guests.MEALS;
     res.expose(guests.MEALS, 'MEALS');
 
- //   if (!invitation.rsvpd) {
- //       return res.render('rsvp/respond');
- //   }
+    if (!invitation.rsvpd) {
+        return res.render('rsvp/respond');
+    }
 
     guestsAttending = invitation.guests.some(function (guest) {
         return guest.is_attending;
