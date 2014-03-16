@@ -214,13 +214,15 @@ app.get('/party_itinerary/',
     console.log(req.user);
   }); 
  
+ /*
  app.get('/rsvp/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.render('new_rsvp/rsvp', { user: req.user });
     console.log(req.user);
   });
- 
+ */
+
 //basic login page. 
 app.get('/login',
   function(req, res) {
@@ -240,14 +242,15 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 
-/*
+
 app.get('/rsvp/',
   ensureLoggedIn('/login'),
+  routes.rsvp.pub, routes.rsvp.edit,
   function(req, res) {
-    req.render('new_rsvp/rsvp', { user: req.user });
+    req.render('routes.rsvp.pub, routes.rsvp.edit', { user: req.user });
     console.log(req.user);
   });
-*/
+
 //app.post('/rsvp/',                       routes.rsvp.resend);
 //app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 
