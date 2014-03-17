@@ -23,15 +23,18 @@ var User = sequelize.define('guest', {
 
 });
 
+/*
 var Invite = sequelize.define('invitation', {
 	id: Sequelize.INTEGER,
 	address: Sequelize.STRING,
 	rsvpd: Sequelize.BOOLEAN,
+	send_paper: Sequelize.BOOLEAN,
 	allow_plusone: Sequelize.BOOLEAN,
 	has_children: Sequelize.BOOLEAN
 });
+*/
 
 User.sync();
-Invite.sync();
+//Invite.sync();
 
-module.exports = User, Invite;
+module.exports = User;
