@@ -109,16 +109,15 @@ function edit(req, res) {
     res.expose(guests.MEALS, 'MEALS');
  	   	console.log(req.user.id);
  	   	console.log(req.user.email);
- 	   	console.log(guest);
  	   	console.log(guests);
 
     if (!req.user.id) {
         return res.render('rsvp/respond');
     }
 
-    guestsAttending = invitation.guests.some(function (guest) {
-    	console.log(guest.is_attending);
-        return guest.is_attending;
+    guestsAttending = invitation.users.some(function (guest) {
+    	console.log(user.is_attending);
+        return user.is_attending;
     });
 
     if (guestsAttending) {
