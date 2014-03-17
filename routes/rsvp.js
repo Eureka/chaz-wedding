@@ -23,7 +23,7 @@ function pub(req, res, next) {
 
  //   if (req.invitation) {
  	   if (req.user) {
- 	   	console.log('req.user: ', req.user);
+ 	   	console.log(req.user);
         return next();
     }
 
@@ -109,15 +109,14 @@ function edit(req, res) {
     res.expose(guests.MEALS, 'MEALS');
  	   	console.log(req.user.id);
  	   	console.log(req.user.email);
- 	   	console.log(guests);
 
-    if (!req.user.id) {
+//    if (!invitation.rsvpd) {
+    if (!req.user.is_attending) {
         return res.render('rsvp/respond');
     }
 
-    guestsAttending = invitation.users.some(function (guest) {
-    	console.log(user.is_attending);
-        return user.is_attending;
+    guestsAttending = invitation.guests.some(function (guest) {
+        return guest.is_attending;
     });
 
     if (guestsAttending) {
