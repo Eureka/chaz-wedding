@@ -214,14 +214,26 @@ app.get('/party_itinerary/',
     console.log(req.user);
   }); 
  
- /*
- app.get('/rsvp/',
-  ensureLoggedIn('/login'),
-  function(req, res) {
-    res.render('new_rsvp/rsvp', { user: req.user });
-    console.log(req.user);
-  });
- */
+// Attempt to load data from database for RSVP page. 
+
+apt.get('/user_data', function(req, res){
+	var pg = require('pg');
+	var conString = "postgres://postgres:open-marriage@localhost/open-marriage";
+	
+	var client = new pg.Client(conString);
+	client.connect(function(err) {
+		if(err) {
+			res.send('could not connect');
+		}
+		client.query('SELECT * from guests where email=req.user.email', function(err,result) {
+			if(err) {
+				res.send('err runnning query');
+				res.send(JSON.stringify(result.rows[0].json));
+				client.end();
+			});
+		});
+});
+
 
 //basic login page. 
 app.get('/login',

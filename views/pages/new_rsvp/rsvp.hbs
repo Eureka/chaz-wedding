@@ -9,10 +9,16 @@
 <div class="l-contain">
 
     <h1><center>
+Test Data:     
+<script>
+   $.get('http://localhost:3000/user_data?callback=?',{}, function(user_data){
+       alert(data.type); 
+   },"json");                  
 
+    </script>
     <center></h1>
 
-    <form class="resend-email l-grid-u" action="/rsvp" method="POST">
+    <form class="resend-email l-grid-u" action="/new_rsvp" method="POST">
         <input type="hidden" name="_csrf" value="{{_csrf}}">
         Email Address: <input type="text" name="email" placeholder="{{address}}">
         Password: <input type="password" name="password" placeholder="Password">
