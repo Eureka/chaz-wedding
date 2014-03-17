@@ -11,7 +11,7 @@ exports.up = function (db, callback) {
 
         db.runSql.bind(db,
             "ALTER TABLE guests " +
-            "ADD CONSTRAINT meal CHECK (meal IN ('seafood', 'beef', 'veggie'));")
+            "ADD CONSTRAINT meal CHECK (meal IN ('vegan', 'vegetarian', 'none'));")
     ], callback);
 };
 
