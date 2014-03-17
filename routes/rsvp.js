@@ -115,8 +115,9 @@ function edit(req, res) {
         return res.render('rsvp/respond');
     }
 
-    guestsAttending = req.user.some(function (guest) {
-        return req.user.is_attending;
+    guestsAttending = invitation.guests.some(function (guest) {
+ //       return req.user.is_attending;
+ 	return ture;
     });
 
     if (guestsAttending) {
