@@ -115,6 +115,7 @@ function edit(req, res) {
     }
 
     guestsAttending = invitation.guests.some(function (guest) {
+    	console.log(guest.is_attending);
         return guest.is_attending;
     });
 
