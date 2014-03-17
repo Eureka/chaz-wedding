@@ -145,6 +145,8 @@ app.get('/', routes.render('landing_page'));
 //new landing page for login. 
 app.get('/welcome/', routes.render('landing_page'));
 
+app.get('/test/', routes.render('load_user'));
+
 app.get('/auth/login/failure', routes.render('/login'));
 app.get('/auth/login/success', routes.render('/wedding/'));
 

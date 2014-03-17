@@ -18,6 +18,7 @@ var User = sequelize.define('guest', {
   total_attending: Sequelize.INTEGER,
   attending_names: Sequelize.STRING,
   is_attending: Sequelize.BOOLEAN,
+  rsvpd: Sequelize.BOOLEAN,
   email_sent: Sequelize.BOOLEAN,
   meal: Sequelize.ARRAY(Sequelize.TEXT),
 
