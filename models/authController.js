@@ -21,8 +21,11 @@ passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password
         return done(null, false);
       }
       done(null, { id: user.id, is_attending: user.is_attending, email: user.email, group: user.groups });
+console.log('InvisInvite:', invs.encipherId(user.id));
     });
   }));
+
+//console.log('InvisInvite:', invs.invitation);
 
 
 passport.serializeUser(function(user, done) {

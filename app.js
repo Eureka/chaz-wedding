@@ -11,6 +11,7 @@ var combo   = require('combohandler'),
     routes     = require('./routes'),
     userModel  = require('./models/userModel.js'),
     AuthController = require('./models/authController.js'),
+    invs    = require('./lib/invitations'),   
 
     app = express();
 // Required Config additions of passport and flash
@@ -239,7 +240,7 @@ app.get('/logout',
 
 // route to authenticate the user
 app.post('/login', passport.authenticate('local', { 
-  successRedirect: '/wedding/',
+  successRedirect: '/rsvp/', 
   failureRedirect: '/login/'
 }));
 
@@ -250,7 +251,7 @@ app.get('/rsvp/',
   routes.rsvp.pub, routes.rsvp.edit,
   function(req, res) {
     req.render('routes.rsvp.pub, routes.rsvp.edit', { user: req.user });
-    console.log(req.user);
+    console.log('reqUser: ', req.user);
   });
 
 //app.post('/rsvp/',                       routes.rsvp.resend);
