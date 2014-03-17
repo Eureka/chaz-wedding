@@ -207,6 +207,7 @@ app.get('/wedding/',
   function(req, res) {
     res.render('wedding', { user: req.user });
     console.log(req.user);
+    console.log('InvisInvite:', invs.encipherId(req.user.id));
   });
  
 app.get('/party_itinerary/',
@@ -238,11 +239,22 @@ app.get('/logout',
     res.redirect('/');
   });
 
+/*
 // route to authenticate the user
 app.post('/login', passport.authenticate('local', { 
   successRedirect: '/rsvp/', 
   failureRedirect: '/login/'
 }));
+*/
+
+app.post('/login', passport.authenticate('local'), 
+	function(req, res) {
+	// if this function is called it means everything worked. 
+	res.redirect('/rsvp/' +  invs.encipherId(req.user.id));
+	console.log('LetsTest: ', req.user.id, 'CrazyID: ',  invs.encipherId(req.user.id));
+//  successRedirect: '/rsvp/',
+//  failureRedirect: '/login/'
+});
 
 
 
@@ -251,7 +263,7 @@ app.get('/rsvp/',
   routes.rsvp.pub, routes.rsvp.edit,
   function(req, res) {
     req.render('routes.rsvp.pub, routes.rsvp.edit', { user: req.user });
-    console.log('reqUser: ', req.user);
+    //console.log('reqUser: ', req.user);
   });
 
 //app.post('/rsvp/',                       routes.rsvp.resend);
