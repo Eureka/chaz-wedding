@@ -109,6 +109,7 @@ function edit(req, res) {
     res.expose(guests.MEALS, 'MEALS');
  	   	console.log('userID: ', req.user.is_attending);
  	   	console.log('userEmail: ', req.user.email);
+ 	   	console.log('attending: ', guestsAttending);
 
 //    if (!invitation.rsvpd) {
     if (!req.user.is_attending) {
@@ -117,7 +118,6 @@ function edit(req, res) {
 
     guestsAttending = invitation.guests.some(function (guest) {
       return req.user.is_attending;
- 	
     });
 
     if (guestsAttending) {
