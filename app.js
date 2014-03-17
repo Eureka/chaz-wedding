@@ -258,7 +258,7 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 
-
+/*
 app.get('/rsvp/',
   ensureLoggedIn('/login'),
   routes.rsvp.pub, routes.rsvp.edit,
@@ -266,7 +266,7 @@ app.get('/rsvp/',
     req.render('routes.rsvp.pub, routes.rsvp.edit', { user: req.user });
     console.log(req.user);
   });
-
+*/
 //app.post('/rsvp/',                       routes.rsvp.resend);
 //app.post('/rsvp/brunch/',                routes.rsvp.brunch);
 
