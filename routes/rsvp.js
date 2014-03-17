@@ -6,9 +6,6 @@ var async = require('async'),
     invs         = require('../lib/invitations'),
     guests       = require('../lib/guests');
 
-//    userModel  = require('../models/userModel.js'),
-//    AuthController = require('../models/authController.js'),
-
 exports.pub    = pub;
 exports.resend = resend;
 exports.login  = login;
@@ -20,10 +17,8 @@ function pub(req, res, next) {
         delete req.session.invitation;
         return res.render('rsvp/after');
     }
-console.log('reqInvite: ', req.invitation);
+
     if (req.invitation) {
- //	   if (req.user) {
- 	   	console.log('reqUser1: ', req.user);
         return next();
     }
 
@@ -34,10 +29,8 @@ console.log('reqInvite: ', req.invitation);
 }
 
 function resend(req, res, next) {
-	var email = req.body.email.trim();
-	//console.log (req.user.email);
-	//var email = req.user.email;
-	
+    var email = req.body.email.trim();
+
     // Always redirect to "/rsvp/" after the wedding.
     if (req.afterWedding) {
         return res.redirect('/rsvp/');
@@ -84,7 +77,6 @@ function login(req, res, next) {
 
     try {
         invitationId = invs.decipherId(req.params.invitation_key);
- //		invitationId = req.user.id;
     } catch (ex) {
         delete req.session.invitation;
         return next(error(401));
@@ -108,18 +100,13 @@ function edit(req, res) {
 
     res.locals.meals = guests.MEALS;
     res.expose(guests.MEALS, 'MEALS');
- 	   	console.log('userID: ', req.user.is_attending);
- 	   	console.log('userEmail: ', req.user.email);
- 	   	console.log('attending: ', guestsAttending);
-		console.log('invite: ', req.invitation);
-		
+
     if (!invitation.rsvpd) {
- //   if (!req.user.is_attending) {
         return res.render('rsvp/respond');
     }
 
     guestsAttending = invitation.guests.some(function (guest) {
-      return guest.is_attending;
+        return guest.is_attending;
     });
 
     if (guestsAttending) {
