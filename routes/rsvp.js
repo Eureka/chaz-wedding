@@ -23,7 +23,7 @@ function pub(req, res, next) {
 console.log('reqInvite: ', req.invitation);
     if (req.invitation) {
  //	   if (req.user) {
- 	   	console.log(req.user);
+ 	   	console.log('reqUser1: ', req.user);
         return next();
     }
 
