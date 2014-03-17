@@ -110,9 +110,10 @@ function edit(req, res) {
  	   	console.log('userID: ', req.user.is_attending);
  	   	console.log('userEmail: ', req.user.email);
  	   	console.log('attending: ', guestsAttending);
-
-//    if (!invitation.rsvpd) {
-    if (!req.user.is_attending) {
+		console.log('invite: ', req.invitation);
+		
+    if (!invitation.rsvpd) {
+ //   if (!req.user.is_attending) {
         return res.render('rsvp/respond');
     }
 
