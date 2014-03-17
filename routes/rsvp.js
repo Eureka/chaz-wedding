@@ -109,6 +109,7 @@ function edit(req, res) {
     res.expose(guests.MEALS, 'MEALS');
  	   	console.log(req.user.id);
  	   	console.log(req.user.email);
+ 	   	console.log(guest);
  	   	console.log(guests);
 
     if (!req.user.id) {
