@@ -20,9 +20,9 @@ function pub(req, res, next) {
         delete req.session.invitation;
         return res.render('rsvp/after');
     }
-
- //   if (req.invitation) {
- 	   if (req.user) {
+console.log('reqInvite: ', req.invitation);
+    if (req.invitation) {
+ //	   if (req.user) {
  	   	console.log(req.user);
         return next();
     }
