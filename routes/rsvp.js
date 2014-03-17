@@ -23,7 +23,7 @@ function pub(req, res, next) {
 
  //   if (req.invitation) {
  	   if (req.user) {
- 	   	console.log(req.user);
+ 	   	console.log('req.user: ', req.user);
         return next();
     }
 
@@ -109,6 +109,7 @@ function edit(req, res) {
     res.expose(guests.MEALS, 'MEALS');
  	   	console.log(req.user.id);
  	   	console.log(req.user.email);
+ 	   	console.log(guests);
 
     if (!req.user.id) {
         return res.render('rsvp/respond');
