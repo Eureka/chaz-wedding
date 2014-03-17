@@ -17,16 +17,17 @@ exports.up = function (db, callback) {
                 title: {type: 'string', length: 8},
                 name : {type: 'string', length: 64},
                 email: {type: 'string', length: 128},
+                is_attending: {type: 'boolean'},
+                is_plusone  : {type: 'boolean', defaultValue: false},
+
 		password: {type: 'string', length: 16},
 		groups: {type: 'string', length: 256},
 		invite_key: {type: 'string', length: 8},
 		allergies: {type: 'string', length: 256},
 		food_pref: {type: 'string', length: 256},		
 
-                is_attending: 'boolean',
 		total_attending: {type: 'string', length: 256},
 		attending_names: {type: 'string', length: 256},
-                is_plusone  : {type: 'boolean', defaultValue: false}
             },
 
         }),
