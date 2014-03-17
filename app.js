@@ -213,14 +213,15 @@ app.get('/party_itinerary/',
     res.render('party_itinerary', { user: req.user, groups: req.user.group });
     console.log(req.user);
   }); 
- 
+
+/* 
 app.get('/rsvp/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.render('new_rsvp/rsvp', { user: req.user });
     console.log(req.user);
   });
-
+*/
 
 //basic login page. 
 app.get('/login',
