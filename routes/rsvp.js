@@ -83,8 +83,8 @@ function login(req, res, next) {
     }
 
     try {
- //       invitationId = invs.decipherId(req.params.invitation_key);
- 		invitationId = req.user.id;
+        invitationId = invs.decipherId(req.params.invitation_key);
+ //		invitationId = req.user.id;
     } catch (ex) {
         delete req.session.invitation;
         return next(error(401));
@@ -119,7 +119,7 @@ function edit(req, res) {
     }
 
     guestsAttending = invitation.guests.some(function (guest) {
-      return req.user.is_attending;
+      return guest.is_attending;
     });
 
     if (guestsAttending) {
