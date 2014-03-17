@@ -83,7 +83,8 @@ function login(req, res, next) {
     }
 
     try {
-        invitationId = invs.decipherId(req.params.invitation_key);
+ //       invitationId = invs.decipherId(req.params.invitation_key);
+ 		invitationId = req.user.id;
     } catch (ex) {
         delete req.session.invitation;
         return next(error(401));
