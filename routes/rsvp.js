@@ -107,8 +107,8 @@ function edit(req, res) {
 
     res.locals.meals = guests.MEALS;
     res.expose(guests.MEALS, 'MEALS');
- 	   	console.log(req.user.id);
- 	   	console.log(req.user.email);
+ 	   	console.log('userID: ', req.user.id);
+ 	   	console.log('userEmail: ', req.user.email);
 
 //    if (!invitation.rsvpd) {
     if (!req.user.is_attending) {
@@ -116,8 +116,8 @@ function edit(req, res) {
     }
 
     guestsAttending = invitation.guests.some(function (guest) {
- //       return req.user.is_attending;
- 	return ture;
+      return req.user.is_attending;
+ 	
     });
 
     if (guestsAttending) {
