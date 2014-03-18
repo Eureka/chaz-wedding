@@ -1,5 +1,6 @@
 var pg = require('pg'),
-
+    userModel  = require('./models/userModel.js'),
+    AuthController = require('./models/authController.js'),
     config = require('../config'),
 
     GUEST_BY_ID    = 'SELECT * FROM guests WHERE id=$1 LIMIT 1',
@@ -19,6 +20,8 @@ var pg = require('pg'),
     };
 
 
+
+/*
 var conString = "postgres://localhost/open-marriage";
 
 var client = new.Client(conString);
@@ -34,3 +37,4 @@ query.on("end", function (result) {
 	console.log(JSON.stringify(result.rows, null "  "));
 	client.end();
 });
+*/
