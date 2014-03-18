@@ -6,7 +6,7 @@ exports.up = function (db, callback) {
     async.series([
         db.addColumn.bind(db, 'guests', 'meal', {
             type  : 'string',
-            length: 8
+            length: 32
         }),
 
         db.runSql.bind(db,
