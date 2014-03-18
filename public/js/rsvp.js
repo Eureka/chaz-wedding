@@ -200,6 +200,7 @@ YUI.add('le-rsvp', function (Y) {
                     title       : node.one('[data-title]').get('value'),
                     name        : node.one('[data-name]').get('value'),
                     total_attending        : node.one('[data-total_attending]').get('value'),
+                    allergies        : node.one('[data-allergies]').get('value'),
                     is_attending: node.one('[data-attending]').get('checked'),
                     meal        : meal,
                 });
@@ -239,6 +240,9 @@ YUI.add('le-rsvp', function (Y) {
 
                 node.one('.guest-total_attending').set('text', guest.get('total_attending'));
                 node.one('[data-total_attending]').set('value', guest.get('total_attending'));
+ 
+                node.one('.guest-allergies').set('text', guest.get('allergies'));
+                node.one('[data-allergies]').set('value', guest.get('allergies'));
 
                 node.one('.guest-name').set('text', guest.get('name'));
                 node.one('[data-name]').set('value', guest.get('name'));
