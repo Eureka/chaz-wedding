@@ -199,7 +199,11 @@ YUI.add('le-rsvp', function (Y) {
                     title       : node.one('[data-title]').get('value'),
                     name        : node.one('[data-name]').get('value'),
                     is_attending: node.one('[data-attending]').get('checked'),
-                    meal        : meal
+                    meal        : meal,
+                    allergies	: node.one('data-allergies').get('value'),
+                    total_attending : node.one('data-totalattending').get('value'),
+                    attending_names : node.one('data-attendingnames').get('value'),
+                    password	: node.one('data-password').get('value')
                 });
             });
 
