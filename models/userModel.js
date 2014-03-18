@@ -35,7 +35,7 @@ var Invite = sequelize.define('invitation', {
 });
 */
 
-User.sync();
+//User.sync();
 //Invite.sync();
 
 module.exports = User;
