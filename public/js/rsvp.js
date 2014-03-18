@@ -242,6 +242,9 @@ YUI.add('le-rsvp', function (Y) {
                 node.one('.guest-name').set('text', guest.get('name'));
                 node.one('[data-name]').set('value', guest.get('name'));
 
+                node.one('.guest-totalattending').set('text', guest.get('total_attending'));
+                node.one('[data-totalattending]').set('value', guest.get('total_attending'));
+
                 node.one('[data-attending]').set('checked', isAttending);
 
                 node.one('.guest-meal span').set('text', guest.mealLabel());
