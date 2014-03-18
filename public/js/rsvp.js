@@ -229,6 +229,9 @@ YUI.add('le-rsvp', function (Y) {
             container.all('address, [data-address]')
                 .setHTML(Y.Escape.html(invitation.get('address')));
 
+            container.all('total_attending, [data-totalattending]')
+                .setHTML(Y.Escape.html(invitation.get('total_attending')));
+
             invitation.get('guests').each(function (guest) {
                 var node        = this.getGuestNode(guest),
                     isAttending = guest.get('is_attending');
@@ -242,9 +245,6 @@ YUI.add('le-rsvp', function (Y) {
 
                 node.one('.guest-name').set('text', guest.get('name'));
                 node.one('[data-name]').set('value', guest.get('name'));
-
-//               node.one('.guest-totalattending').set('text', guest.get('total_attending'));
-//               node.one('[data-totalattending]').set('value', guest.get('total_attending'));
 
                 node.one('[data-attending]').set('checked', isAttending);
 
