@@ -5,7 +5,7 @@
 <title>Chas and Fiona Invite You To Their Wedding</title>
 </head>
 <body>
-<img src="http://i.imgur.com/4R70hzn.png" height="1700" width="900"/>
+<img src="rsvp_background"/>
 
 <div style="position: absolute; top: 655px; left: 10px; width: 890px; height: 25px" class="front">
 <font size="20" color="#FFFFFF" face="Palatino Linotype, Book Antiqua, Palatino, serif">
@@ -28,8 +28,6 @@
 <div style="position: absolute; top: 1133px; left: 258px; width: 400px; height: 25px">  
   <font size="5"><center><p>are pleased to invite you to our wedding June 21st, 2014 in Sheridan, WY. </p>
   <p> At anytime, you can RSVP on our website using your special link: <a href="http://www.cfwedding2014.com/rsvp/{{id}}">http://www.cfwedding2014.com/rsvp/{{id}}</a></p>
-  <p> Your username is: {{email}} </p>
-  <p> Your password is: {{password}} </p>
   <p> We put together all the information we think you'll need for our wedding on our website, including: dates and times, venue locations, places to stay, and things to do.</p>
   <p> We hope to see you there!<br />
     Chas & fiona </p>
