@@ -130,7 +130,7 @@ YUI.add('le-rsvp', function (Y) {
             '[data-edit]'     : {click: 'edit'},
             '[data-done]'     : {click: 'done'},
             '[data-add-guest]': {click: 'addGuest'},
-            '[data-attending]': {click: 'proposeUpdates'},
+//            '[data-attending]': {click: 'proposeUpdates'},
             '[data-totalattending]': {click: 'proposeUpdates'},
             '[data-meal]'     : {click: 'proposeUpdates'},
             'input, textarea' : {blur: 'proposeUpdates'}
