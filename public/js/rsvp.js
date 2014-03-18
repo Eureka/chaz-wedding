@@ -201,10 +201,6 @@ YUI.add('le-rsvp', function (Y) {
                     name        : node.one('[data-name]').get('value'),
                     is_attending: node.one('[data-attending]').get('checked'),
                     meal        : meal,
-                   // allergies	: node.one('data-allergies').get('value'),
-  //                  total_attending : node.one('data-totalattending').get('value'),
-                   // attending_names : node.one('data-attendingnames').get('value'),
-                  //  password	: node.one('data-password').get('value')
                 });
             });
 
@@ -228,9 +224,6 @@ YUI.add('le-rsvp', function (Y) {
 
             container.all('address, [data-address]')
                 .setHTML(Y.Escape.html(invitation.get('address')));
-
-            container.all('total_attending, [data-totalattending]')
-                .setHTML(Y.Escape.html(invitation.get('total_attending')));
 
             invitation.get('guests').each(function (guest) {
                 var node        = this.getGuestNode(guest),
