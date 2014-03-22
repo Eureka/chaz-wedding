@@ -6,13 +6,16 @@
                 <span class="guest-name">{{name}}</span>
             </span>
 
-            <span class="guest-title-val l-grid-u">
+	<label class="l-grid-u-full">
+	        <span class="l-grid-u">
                 Title: <input type="text" value="{{title}}" placeholder="Title" data-title>
             </span>
-            <span class="guest-name-val l-grid-u">
+	<label class="l-grid-u-full">
+	        <span class="l-grid-u">
                 Full Name: <input type="text" value="{{name}}" placeholder="Full Name" data-name>
             </span>
-            <span class="guest-name-val l-grid-u">
+	<label class="l-grid-u-full">
+	        <span class="l-grid-u">
                 Number Attending: <input type="text" value="{{total_attending}}" maxlength="2" size="2" placeholder="Total Attending" data-total_attending>
 			</span>
         </h2>
@@ -33,12 +36,13 @@
                 <span class="guest-meal-val-label">{{label}}</span>
             </label>
           {{/each}}
-            <span class="guest-name-val l-grid-u">
-                Allergies: <input type="text" value="{{allergies}}" placeholder="Default: none" data-allergies>
+	<label class="l-grid-u-full">
+	        <span class="l-grid-u">
+                <b>Allergies:</b> <input type="text" value="{{allergies}}" placeholder="Default: none" data-allergies>
 			</span>
 	<label class="l-grid-u-full">
 	        <span class="l-grid-u">
-                Password: <input type="text" value="{{password}}" placeholder="Password" data-password>
+                <b>Password:</b> <input type="password" value="{{password}}" placeholder="Password" data-password>
 			</span>
 	</label>
         </p>
