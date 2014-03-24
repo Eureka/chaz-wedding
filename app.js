@@ -160,6 +160,12 @@ app.get('/admin/',
     console.log(req.user);
   });
 
+app.get('/pledge/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('pledge', { user: req.user });
+    console.log(req.user);
+  });
 
 app.get('/home/',
   ensureLoggedIn('/login'),
