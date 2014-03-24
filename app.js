@@ -64,6 +64,7 @@ app.locals({
     subnav: {
         logistics: [
             {id: 'logistics', url: '/logistics/',         label: 'Logistics'},
+            {id: 'airports',    url: '/logistics/',  label: 'Airports'},
             {id: 'hotels',    url: '/logistics/hotels/',  label: 'Hotels'},
             {id: 'outings',   url: '/logistics/outings/', label: 'Outings'},
             {id: 'ride_share',   url: '/logistics/ride_share/', label: 'Ride Share'}
