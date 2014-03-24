@@ -24,9 +24,9 @@
             </label>
         </p>
 
-        <p class="guest-meal"><b>Meal Preference:</b> <span>{{guestMeal}}</span></p>
+        <p class="guest-meal"><b>Dietary Restrictions:</b> <span>{{guestMeal}}</span></p>
         <p class="guest-meal-val l-grid">
-            <b class="l-grid-u-full">Meal Preference:</b>
+            <b class="l-grid-u-full">Dietary Restrictions:</b>
           {{#each mealOptions}}
             <label class="l-grid-u">
                 <input type="radio" data-meal name="guest-meal-{{../id}}" value="{{id}}" {{isGuestMeal ../meal}}>
