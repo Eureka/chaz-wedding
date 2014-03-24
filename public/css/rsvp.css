@@ -106,7 +106,7 @@
     content: none;
 }
 .guest-salutation:after {
-    content: "n";
+    content: "Is Not Attending";
     display: inline-block;
     *display: inline;
     zoom: 1;
@@ -114,9 +114,11 @@
     font-size: 1.3333em;
     line-height: 0.5;
     padding: 0.125em 0 0 0.25em;
+    color: #990000;
+}
 }
 .is-guest-attending .guest-salutation:after {
-    content: "y";
+    content: "Is Attending";
     color: #75AB81;
 }
 .guest-attending {
