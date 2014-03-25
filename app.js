@@ -133,8 +133,8 @@ var needsGroup = function(group) {
       console.log('yay');
     } else {
     console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
-      res.send(401, 'Unauthorized');
-      res.redirect('/welcome/');
+//      res.send(401, 'Unauthorized');
+		res.render('/login');
      }
   };
 };
