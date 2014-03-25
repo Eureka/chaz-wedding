@@ -134,6 +134,7 @@ var needsGroup = function(group) {
     } else {
     console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
       res.send(401, 'Unauthorized');
+      res.redirect('/welcome/');
      }
   };
 };
