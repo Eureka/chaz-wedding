@@ -30,7 +30,8 @@ config = {
     },
 
     email: {
-        from: 'C&F Wedding 2014 <cfwedding2014@gmail.com>'
+        from: 'C&F Wedding 2014 <rsvp@cfwedding2014.com>',
+	h:Reply-To: 'cfwedding2014@gmail.com'
     },
 
     dirs: {
