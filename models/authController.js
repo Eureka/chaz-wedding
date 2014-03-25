@@ -18,8 +18,7 @@ passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password
       }
       if (user.password !== password){
 	console.log('Bad Password: ', password, 'Username: ', username);
-  //      return done(null, false);
-        return res.redirect('/login/'), done(null, false);
+        return done(null, false);
       }
       done(null, { id: user.id, is_attending: user.is_attending, email: user.email, group: user.groups });
 console.log('InvisInvite:', invs.encipherId(user.id));
