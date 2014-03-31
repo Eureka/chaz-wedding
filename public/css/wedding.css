@@ -11,11 +11,11 @@ body {
     top: 0;
     left: 0;
     position: fixed !important;
-    background: #fff;
+    background: #fcfcf7;
     background-image:url('/img/banner_updated.png');
     background-repeat: no-repeat;
     background-attachment:fixed;
-    background-position:center;
+    background-position:center top;
 }
 
 .l-wrap {
