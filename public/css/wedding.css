@@ -13,6 +13,7 @@ body {
     position: fixed !important;
     background: #fff;
     background-image:url('/img/banner_updated.png');
+    background-repeat: no-repeat;
 }
 
 .l-wrap {
