@@ -131,7 +131,15 @@ var needsGroup = function(group) {
     if ( req.user.group === group || req.user.group === 'admin') {
       next();
       console.log('yay');
-    } else {
+    }
+    if ( req.user.group  === 'family') {
+	res.redirect('/party_itinerary_family/');
+	console.log('Redirecting to Family itinerary');
+	}
+    if (req.user.group === 'friend') {
+	res.redirect('/party_itinerary_friend/');
+	console.log('Redirect to friend itinerary');
+	} else {
     console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
 //      res.send(401, 'Unauthorized');
 		res.redirect('/login/');
@@ -225,6 +233,21 @@ app.get('/party_itinerary/',
     res.render('party_itinerary', { user: req.user, groups: req.user.group });
     console.log(req.user);
   }); 
+
+app.get('/party_itinerary_family/',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('party_itinerary_family', { user: req.user });
+    console.log(req.user);
+  });
+
+app.get('/party_itinerary_friend',
+  ensureLoggedIn('/login'),
+  function(req, res) {
+    res.render('party_itinerary_friend', { user: req.user });
+    console.log(req.user);
+  });
+
 
 /* 
 app.get('/rsvp/',
