@@ -131,15 +131,13 @@ var needsGroup = function(group) {
     if ( req.user.group === group || req.user.group === 'admin') {
       next();
       console.log('yay');
-    }
-    if ( req.user.group  === 'family') {
-	res.redirect('/party_itinerary_family/');
-	console.log('Redirecting to Family itinerary');
-	}
-    if (req.user.group === 'friend') {
+    } else if ( req.user.group === 'friend') {
+	console.log('Redirect to friend itn.');
 	res.redirect('/party_itinerary_friend/');
-	console.log('Redirect to friend itinerary');
-	} else {
+    } else if ( req.user.group === 'family') {
+	console.log('Redirect to family itn.');
+	res.redirect('/party_itinerary_family/');
+    } else {
     console.log('debug data: ', 'requser: ', req.user,'OurGroup: ', req.user.group,'CheckForGroup: ', group);
 //      res.send(401, 'Unauthorized');
 		res.redirect('/login/');
@@ -231,7 +229,7 @@ app.get('/party_itinerary/',
   needsGroup('wedding_party'),
   function(req, res) {
     res.render('party_itinerary', { user: req.user, groups: req.user.group });
-    console.log(req.user);
+    console.log(req.user, 'Redirec Location: ');
   }); 
 
 app.get('/party_itinerary_family/',
@@ -241,7 +239,7 @@ app.get('/party_itinerary_family/',
     console.log(req.user);
   });
 
-app.get('/party_itinerary_friend',
+app.get('/party_itinerary_friend/',
   ensureLoggedIn('/login'),
   function(req, res) {
     res.render('party_itinerary_friend', { user: req.user });
